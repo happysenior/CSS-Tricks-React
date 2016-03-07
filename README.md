@@ -10,7 +10,7 @@ This repo is for CSS-Tricks' [React: A Three-Part Series](#needurl). This docume
 
 Each guide will have a README file for its specific documentation:
 
-- [Guide 1: React Router](#)
+- [Guide 1: React Router]('tree/master/guide-1-react-router')
 - Guide 2: Container Components (Coming Soon)
 - Guide 3: Redux (Coming Soon)
 
