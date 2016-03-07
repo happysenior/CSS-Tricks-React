@@ -1,12 +1,10 @@
 {
-  "name": "sandbox",
+  "name": "react-guide",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "nodemon --watch server.js server.js --exec babel-node"
   },
-  "keywords": [],
   "author": "Brad Westfall <brad@azpixels.com>",
   "license": "ISC",
   "dependencies": {
