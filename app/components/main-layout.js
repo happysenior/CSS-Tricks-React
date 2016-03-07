@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link  } from 'react-router';
+import { Link, browserHistory  } from 'react-router';
 
 const MainLayout = React.createClass({
   render: function() {
