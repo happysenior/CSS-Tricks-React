@@ -36,7 +36,7 @@ They have great documentation if you want to learn more about how it works, but 
 
 A `GET` request to _localhost:3001/users_ will return a JSON array which resembles:
 
-```json
+```
 [
     {
       "id": 3,
