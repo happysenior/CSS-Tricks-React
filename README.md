@@ -81,16 +81,25 @@ run the `webpack` or `webpack -w` command directly from the command-line.
 Babel allows us to write ES6 (and even ES7) code before the browser supports it. Like Webpack, Babel will re-write our ES6 code so that it's valid ES5 and understood by the browser. You might ask why we would want to write in future versions of JavaScript that aren't even fully supported? Well, ES6 has all kinds of new syntaxes which is really nice to use. Plus, ES6 was finalized in 2015, which is why it's also called ES2015. It truly is the way of the future for JavaScript so getting familiar with it sooner-than-later is best. Many React guides use ES6, so getting familiar with it will also help you learn React.
 
 
-## Extra Tips and Tricks
+# Extra Tips and Tricks
 
 
-### JSX with Sublime
+## JSX with Sublime
 
 If you use Sublime Text Editor, you may notice the JSX syntax highlighting is weird in `.js` files. That's because the JavaScript syntax highlighter isn't familiar with markup. You'll probably want to install the [babel-sublime](https://github.com/babel/babel-sublime) plugin which encourages you to use the _JavaScript (Babel)_ syntax for your files over the _JavaScript_ syntax.
 
 You might also notice that Emmet shortcuts don't work in JSX. Wes Bos wrote a [great guide](http://wesbos.com/emmet-react-jsx-sublime/) for setting that up.
 
 
-### More to come...
+## The multiple ways of creating components
+
+For myself, I prefer the `React.createClass` way over the `extends React.Component` way. Pete Hunt (former Facebook React team developer) [once wrote](https://github.com/petehunt/react-howto#learning-es6):
+
+> "You may see some talk about ES6 classes being the preferred way to create React components. This is untrue. Most people (including Facebook) are using React.createClass().""
+
+I'm not saying there's anything wrong with the ES6 way, I'm just saying you don't have to feel so bad that you're not doing it the ES6 way.
+
+
+## More to come...
 
 If you want to make more beginner suggestions that help beginners break through the hurdles, start a GitHub issue and perhaps we can add more tips here.

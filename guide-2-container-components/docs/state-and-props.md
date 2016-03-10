@@ -13,7 +13,7 @@ const UserList = React.createClass({
   componentWillMount: function() {
     const _this = this;
     $.get('/path/to/user-api').then(function(response) {
-      _this.setState({users: response.data})
+      _this.setState({users: response})
     });
   },
 
