@@ -97,7 +97,7 @@ For myself, I prefer the `React.createClass` way over the `extends React.Compone
 
 > "You may see some talk about ES6 classes being the preferred way to create React components. This is untrue. Most people (including Facebook) are using React.createClass()."
 
-I'm not saying there's anything wrong with the ES6 way, I'm just saying you don't have to feel so bad that you're not doing it the ES6 way.
+I'm not saying there's anything wrong with the ES6 way, I'm just saying you don't have to feel bad or behind if you do it the `React.createClass` way.
 
 
 ## More to come...
