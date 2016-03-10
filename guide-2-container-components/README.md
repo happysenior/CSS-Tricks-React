@@ -146,14 +146,13 @@ Imagine we wanted to pass an object from parent component to child component:
 ```js
 // Parent Component's render method
 render: function() {
-
-  var user = {
+  const user = {
     name: 'Brad',
     occupation: 'Web Development',
     state: 'Arizona'
-  }
+  };
 
-  return (<ChildComponent user={user} />)
+  return (<ChildComponent user={user} />);
 }
 ```
 
@@ -164,14 +163,13 @@ On the parent, we could do this instead:
 ```js
 // Parent Component's render method
 render: function() {
-
-  var user = {
+  const user = {
     name: 'Brad',
     occupation: 'Web Development',
     state: 'Arizona'
-  }
+  };
 
-  return (<ChildComponent name={user.name} occupation={user.occupation} state={user.state} />)
+  return (<ChildComponent name={user.name} occupation={user.occupation} state={user.state} />);
 }
 ```
 
@@ -184,14 +182,13 @@ With the spread operator, we can write the parent component like this:
 ```js
 // Parent Component's render method
 render: function() {
-
-  var user = {
+  const user = {
     name: 'Brad',
     occupation: 'Web Development',
     state: 'Arizona'
-  }
+  };
 
-  return (<ChildComponent {...user} />)
+  return (<ChildComponent {...user} />);
 }
 ```
 
