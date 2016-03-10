@@ -11,7 +11,7 @@ const SearchLayout = React.createClass({
           {this.props.children}
         </div>
         <footer className="search-footer">
-          3 Results
+          6 Results
         </footer>
       </div>
       );

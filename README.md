@@ -17,22 +17,31 @@ Each guide will have a README file for its specific documentation:
 
 ## Installing and Running Code
 
-There are three guides in this repo that correspond to the three CSS-Tricks articles. Each guide serves as a distinct project and each will need to be npm-installed and ran separately. 
+There are three guides in this repo that correspond to the three CSS-Tricks articles. Each guide serves as a distinct project and each will need to be npm-installed and ran separately.
 
 Start by cloning this repo and installing the React Router guide:
 
 ```sh
 cd guide-1-react-router
 npm install
-npm start
+gulp
 ```
 
-To run the other guides, cd to their folders and run the `npm` steps again from their folder.
+> The server will be available at localhost:3000
+
+To run the code from the other guides, `cd` to their folders and run the `npm` steps again from their folder.
+
+
+# Implementation Details
+
+The articles at CSS Tricks will be focused on their respective topics. They don't cover 100% of the concepts and implementation details of the code in the GitHub Guides. However, each guide will come with its own README.md file that tries to cover some of the implementation details, especially for ES6 concepts.
+
+It should also be noted that the guides leave out many formalities like validation, security (XSS, CSRF) and organizational details to stay focused on the topics. These guides are trying to convey the "bigger picture" of how React _can_ work in a Single Page Application. They do not necessarily serve as a "best-practices" starting point.
 
 
 ### Server
 
-Each guide uses a very simple Express server which should take no configuration on your part to launch. The `npm start` step will launch the server so you can visit _localhost:3000_ in the browser to see the guide. Type `CTRL+C` to stop the server, and remember that only one guide can be ran at any given time since you'll `cd` to each guide and run its server separately.
+Each guide uses a very simple Express server which should take no configuration on your part to setup. The `gulp` step will launch the server so you can visit _localhost:3000_ in the browser to see the guide. Type `CTRL+C` to stop the server, and remember that only one guide can be ran at any given time since you'll `cd` to each guide and run its server separately.
 
 
 ## Webpack
@@ -49,43 +58,22 @@ If you're worried that Webpack bundling the code will mean that DevTools (or sim
 
 For running the code in these guides, you don't even need to think about Webpack. The builds are already made before you do the clone of this repo. However, if you want to make any changes to the front-end (React) JavaScript, then you will have to use Webpack to re-build the `bundle.js` file.
 
-So how do you install Webpack?
+### So how do you install Webpack?
 
-### Global Install
-
-Normally, Webpack is installed globally using:
+For these guides you won't need to install Webpack globally. The `npm install` command will install a version of Webpack that gulp uses. To launch Webpack from gulp, type:
 
 ```sh
-sudo npm install -g webpack
+gulp watch
 ```
 
-Then you can do this command, but be sure to do this on the web root (where the `webpack.config.js` file is)
+This launches Webpack watches for changes in the `/app` folder.
 
-```
-webpack
-```
+Note that the `gulp` command will launch the Node server and the `gulp watch` command takes care of the React/Webpack part. So you'll want to run these commands in two separate tabs if you want to have the server running and to be making React code changes.
 
-This will bundle your JavaScript into `public/js/bundle.js`
+### Other configurations
 
-To have Webpack "watch" your changes and to keep building as new changes occur, type:
-
-```
-webpack -w
-```
-
-### Local Install
-
-Just incase you don't want to do a global install because you're not sure about installing Webpack globally, we've included Webpack in the `node_modules` folder which allows you to use it without having it installed globally:
-
-```
-# To build
-node_modules/.bin/webpack
-
-# To build and watch
-node_modules/.bin/webpack -w
-```
-
-Again, be sure to run these commands from the same path as where `webpack.config.js` exists.
+If you don't use a gulp strategy in other projects, it probably makes more sense to [install Webpack globally](http://webpack.github.io/docs/installation.html) and
+run the `webpack` or `webpack -w` command directly from the command-line.
 
 
 ## Babel
@@ -105,4 +93,4 @@ You might also notice that Emmet shortcuts don't work in JSX. Wes Bos wrote a [g
 
 ### More to come...
 
-To make suggestions, feel free to start an issue
+If you want to make more beginner suggestions that help beginners break through the hurdles, start a GitHub issue and perhaps we can add more tips here.
