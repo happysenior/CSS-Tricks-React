@@ -194,4 +194,4 @@ render: function() {
 
 Now this a nice way to write code for the parent, and the child gets to access the props like this: `this.props.name`, `this.props.occupation` and `this.props.state`.
 
-In the guide, you can see this behavior on the `user-profile-container.js` file.
+In the guide, you can see this behavior on the [`user-profile-container.js`](https://github.com/bradwestfall/CSS-Tricks-React-Series/blob/master/guide-2-container-components/app/components/containers/user-profile-container.js#L33) file.
