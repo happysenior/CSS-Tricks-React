@@ -102,4 +102,4 @@ I'm not saying there's anything wrong with the ES6 way, I'm just saying you don'
 
 ## More to come...
 
-If you want to make more beginner suggestions that help beginners break through the hurdles, start a GitHub issue and perhaps we can add more tips here.
+If you want to make more suggestions for this section that help beginners break through the hurdles, start a GitHub issue and perhaps we can add more tips here.
