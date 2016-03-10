@@ -19702,8 +19702,16 @@
 	
 	var _userProfileContainer2 = _interopRequireDefault(_userProfileContainer);
 	
+	var _widgetListContainer = __webpack_require__(242);
+	
+	var _widgetListContainer2 = _interopRequireDefault(_widgetListContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// Pages
+	
+	
+	// Layouts
 	exports.default = _react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.browserHistory },
@@ -19720,14 +19728,18 @@
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _userListContainer2.default })
 	      ),
 	      _react2.default.createElement(_reactRouter.Route, { path: ':userId', component: _userProfileContainer2.default })
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Route,
+	      { path: 'widgets' },
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { component: _searchLayout2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _widgetListContainer2.default })
+	      )
 	    )
 	  )
 	);
-
-	// Pages
-
-
-	// Layouts
 
 /***/ },
 /* 160 */
@@ -24803,6 +24815,15 @@
 	              { to: '/users', activeClassName: 'active' },
 	              'Users'
 	            )
+	          ),
+	          _react2.default.createElement(
+	            'li',
+	            null,
+	            _react2.default.createElement(
+	              _reactRouter.Link,
+	              { to: '/widgets', activeClassName: 'active' },
+	              'Widgets'
+	            )
 	          )
 	        )
 	      ),
@@ -24853,7 +24874,7 @@
 	      _react2.default.createElement(
 	        "footer",
 	        { className: "search-footer" },
-	        "3 Results"
+	        "6 Results"
 	      )
 	    );
 	  }
@@ -24989,12 +25010,12 @@
 	exports.default = function (props) {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'user-list' },
+	    { className: 'data-list' },
 	    props.users.map(function (user) {
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { key: user.id, className: 'user' },
+	        { key: user.id, className: 'data-list-item' },
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'details' },
@@ -25046,7 +25067,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	/**
-	 * Get Users
+	 * Get users
 	 */
 	
 	function getUserList() {
@@ -26317,6 +26338,150 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _widgetList = __webpack_require__(243);
+	
+	var _widgetList2 = _interopRequireDefault(_widgetList);
+	
+	var _widgetApi = __webpack_require__(244);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var WidgetListContainer = _react2.default.createClass({
+	  displayName: 'WidgetListContainer',
+	
+	
+	  getInitialState: function getInitialState() {
+	    return {
+	      widgets: []
+	    };
+	  },
+	
+	  componentWillMount: function componentWillMount() {
+	    this.refreshWidgetList();
+	  },
+	
+	  refreshWidgetList: function refreshWidgetList() {
+	    var _this = this;
+	    (0, _widgetApi.getWidgetList)().then(function (widgets) {
+	      _this.setState({ widgets: widgets });
+	    });
+	  },
+	
+	  deleteWidget: function deleteWidget(widgetId) {
+	    var _this = this;
+	    (0, _widgetApi.deleteWidget)(widgetId).then(function () {
+	      _this.refreshWidgetList();
+	    });
+	  },
+	
+	  render: function render() {
+	    return _react2.default.createElement(_widgetList2.default, { widgets: this.state.widgets, deleteWidget: this.deleteWidget });
+	  }
+	
+	});
+	
+	exports.default = WidgetListContainer;
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'data-list' },
+	    props.widgets.map(function (widget) {
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { key: widget.id, className: 'data-list-item' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'details' },
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/widgets/' + widget.id },
+	            widget.name
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'controls' },
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: props.deleteWidget.bind(null, widget.id), className: 'delete' },
+	            'Delete'
+	          )
+	        )
+	      );
+	    })
+	  );
+	};
+	
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getWidgetList = getWidgetList;
+	exports.deleteWidget = deleteWidget;
+	
+	var _axios = __webpack_require__(223);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	/**
+	 * Get widgets
+	 */
+	
+	function getWidgetList() {
+	  return _axios2.default.get('http://localhost:3001/widgets').then(function (response) {
+	    return response.data;
+	  });
+	}
+	
+	/**
+	 * Delete a widget
+	 */
+	
+	function deleteWidget(widgetId) {
+	  return _axios2.default.delete('http://localhost:3001/widgets/' + widgetId);
+	}
 
 /***/ }
 /******/ ]);

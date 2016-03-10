@@ -6,15 +6,15 @@ export default function(props) {
   return (
     <div className="data-list">
 
-      {props.users.map(function(user) {
+      {props.widgets.map(function(widget) {
 
         return (
-          <div key={user.id} className="data-list-item">
+          <div key={widget.id} className="data-list-item">
             <div className="details">
-              <Link to={'/users/' + user.id}>{user.name}</Link>
+              <Link to={'/widgets/' + widget.id}>{widget.name}</Link>
             </div>
             <div className="controls">
-              <button onClick={props.deleteUser.bind(null, user.id)} className="delete">Delete</button>
+              <button onClick={props.deleteWidget.bind(null, widget.id)} className="delete">Delete</button>
             </div>
           </div>
         );

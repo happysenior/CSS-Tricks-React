@@ -129,3 +129,68 @@ deleteUser: function(userId) {
 ```
 
 Note that I kept the `function` word on the outer function to show that has nothing to do with our ability to omit `_this` in this example. It's the `.then()` callback that uses an arrow function now which means the `this` inside of it doesn't refer to that arrow function, but rather it refers to the same `this` as the `deleteuser()` method would create.
+
+
+## ES6 Spread Operator
+
+Be sure to look up and study the new [ES6 spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator). It's my favorite new feature in ES6!
+
+With how React uses attributes to pass props from parent component to child component, the spread operator can make this process even easier.
+
+Imagine we wanted to pass an object from parent component to child component:
+
+```js
+// Parent Component's render method
+render: function() {
+
+  var user = {
+    name: 'Brad',
+    occupation: 'Web Development',
+    state: 'Arizona'
+  }
+
+  return (<ChildComponent user={user} />)
+}
+```
+
+This would do the trick but now the child component must access the user's name like this: `this.props.user.name`
+
+On the parent, we could do this instead:
+
+```js
+// Parent Component's render method
+render: function() {
+
+  var user = {
+    name: 'Brad',
+    occupation: 'Web Development',
+    state: 'Arizona'
+  }
+
+  return (<ChildComponent name={user.name} occupation={user.occupation} state={user.state} />)
+}
+```
+
+Which would allow the child component to now access the user's name like this: `this.props.name`. This nicer for the child component, but it's obnoxious to create an attribute for each property on the parent component.
+
+### Spread operator to the rescue!
+
+With the spread operator, we can write the parent component like this:
+
+```js
+// Parent Component's render method
+render: function() {
+
+  var user = {
+    name: 'Brad',
+    occupation: 'Web Development',
+    state: 'Arizona'
+  }
+
+  return (<ChildComponent {...user} />)
+}
+```
+
+Now this a nice way to write code for the parent, and the child gets to access the props like this: `this.props.name`, `this.props.occupation` and `this.props.state`.
+
+In the guide, you can see this behavior on the `user-profile-container.js` file.

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 /**
- * Get Users
+ * Get users
  */
 
 export function getUserList() {

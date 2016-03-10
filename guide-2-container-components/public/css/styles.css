@@ -55,16 +55,16 @@ button.delete {
 
 
 /**
- * User List
+ * Data List
  */
 
-.user-list .user {
+.data-list-item {
   padding: 0.6em;
   display: flex;
   border-bottom: 1px solid #bbb;
 }
 
-.user-list .user .details {
+.data-list-item .details {
   flex: 1;
 }
 

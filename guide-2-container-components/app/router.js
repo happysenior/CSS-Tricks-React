@@ -9,6 +9,7 @@ import SearchLayout from './components/layouts/search-layout';
 import Home from './components/home';
 import UserListContainer from './components/containers/user-list-container';
 import UserProfileContainer from './components/containers/user-profile-container';
+import WidgetListContainer from './components/containers/widget-list-container';
 
 export default (
   <Router history={browserHistory}>
@@ -20,6 +21,12 @@ export default (
             <IndexRoute component={UserListContainer} />
           </Route>
           <Route path=":userId" component={UserProfileContainer} />
+        </Route>
+
+        <Route path="widgets">
+          <Route component={SearchLayout}>
+            <IndexRoute component={WidgetListContainer} />
+          </Route>
         </Route>
 
     </Route>
