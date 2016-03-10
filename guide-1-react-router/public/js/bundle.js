@@ -19721,22 +19721,25 @@
 	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _home2.default }),
 	    _react2.default.createElement(
 	      _reactRouter.Route,
-	      { component: _searchLayout2.default },
-	      _react2.default.createElement(_reactRouter.Route, { path: 'users', component: _userList2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'users/:userId', component: _userProfile2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'widgets', component: _widgetList2.default })
+	      { path: 'users' },
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { component: _searchLayout2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _userList2.default })
+	      ),
+	      _react2.default.createElement(_reactRouter.Route, { path: ':userId', component: _userProfile2.default })
+	    ),
+	    _react2.default.createElement(
+	      _reactRouter.Route,
+	      { path: 'widgets' },
+	      _react2.default.createElement(
+	        _reactRouter.Route,
+	        { component: _searchLayout2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { component: _widgetList2.default })
+	      )
 	    )
 	  )
 	);
-
-	/*
-	The user paths could have also been written as
-
-	<Route path="users">
-	  <IndexRoute component={UserList} />
-	  <Route path=":userId" component={UserProfile} />
-	</Route>
-	*/
 
 /***/ },
 /* 160 */
@@ -24858,13 +24861,21 @@
 	    return _react2.default.createElement(
 	      "div",
 	      { className: "search" },
-	      _react2.default.createElement("header", { className: "search-header" }),
+	      _react2.default.createElement(
+	        "header",
+	        { className: "search-header" },
+	        "Search Layout Header"
+	      ),
 	      _react2.default.createElement(
 	        "div",
-	        { className: "results" },
+	        { className: "search-results" },
 	        this.props.children
 	      ),
-	      _react2.default.createElement("div", { className: "search-footer pagination" })
+	      _react2.default.createElement(
+	        "footer",
+	        { className: "search-footer" },
+	        "Search Layout Footer"
+	      )
 	    );
 	  }
 	});
@@ -24875,7 +24886,7 @@
 /* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -24888,13 +24899,40 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Home = _react2.default.createClass({
-	  displayName: 'Home',
+	  displayName: "Home",
 	
 	  render: function render() {
 	    return _react2.default.createElement(
-	      'h1',
-	      null,
-	      'Welcome to the Home Page'
+	      "div",
+	      { className: "home-page" },
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "The app has React Router"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "While the ",
+	        _react2.default.createElement(
+	          "a",
+	          { href: "#" },
+	          "CSS-Tricks article"
+	        ),
+	        " for this guide covers an explaination of ",
+	        _react2.default.createElement(
+	          "strong",
+	          null,
+	          "React Router"
+	        ),
+	        ", there are still many implementation details in this code that the article doesn't cover. For a better understanding of those details, see the ",
+	        _react2.default.createElement(
+	          "a",
+	          { href: "https://github.com/bradwestfall/CSS-Tricks-React-Series" },
+	          "Github documentation"
+	        ),
+	        " for this guide."
+	      )
 	    );
 	  }
 	});
@@ -24931,15 +24969,6 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: 'users/1' },
-	          'Ryan'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'li',
-	        null,
-	        _react2.default.createElement(
-	          _reactRouter.Link,
 	          { to: 'users/2' },
 	          'Michael'
 	        )
@@ -24949,8 +24978,44 @@
 	        null,
 	        _react2.default.createElement(
 	          _reactRouter.Link,
+	          { to: 'users/1' },
+	          'Ryan'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
 	          { to: 'users/3' },
 	          'Dan'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: 'users/4' },
+	          'Matt'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: 'users/5' },
+	          'Tobias'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: 'users/6' },
+	          'Sebastian'
 	        )
 	      )
 	    );

@@ -8,6 +8,6 @@ export default React.createClass({
         <li>Widget 2</li>
         <li>Widget 3</li>
       </ul>
-      );
+    );
   }
 });

@@ -15,20 +15,20 @@ export default (
   <Router history={browserHistory}>
     <Route component={MainLayout}>
       <Route path="/" component={Home} />
-      <Route component={SearchLayout}>
-        <Route path="users" component={UserList} />
-        <Route path="users/:userId" component={UserProfile} />
-        <Route path="widgets" component={WidgetList} />
-      </Route> 
+
+      <Route path="users">
+        <Route component={SearchLayout}>
+          <IndexRoute component={UserList} />
+        </Route>
+        <Route path=":userId" component={UserProfile} />
+      </Route>
+
+      <Route path="widgets">
+        <Route component={SearchLayout}>
+          <IndexRoute component={WidgetList} />
+        </Route>
+      </Route>
+
     </Route>
   </Router>
-  );
-
-/*
-The user paths could have also been written as
-
-<Route path="users">
-  <IndexRoute component={UserList} />
-  <Route path=":userId" component={UserProfile} />
-</Route>
-*/
+);

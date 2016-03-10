@@ -17,7 +17,7 @@ const MainLayout = React.createClass({
           {this.props.children}
         </main>
       </div>
-      );
+    );
   }
 });
 
