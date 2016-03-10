@@ -20,6 +20,12 @@ If you want to edit the React code, you'll have to re-build the `public/js/bundl
 gulp watch
 ```
 
+
+# Implementation Details
+
+Here are some details for this guide that weren't covered in the tutorial:
+
+
 ## Keeping it simple
 
 For simplicity, components in this guide are missing some formalities like [prop types](https://facebook.github.io/react/docs/reusable-components.html). I've tried to keep the components as simple as possible to get them working with the router. Since it's the minimal code to get the router working, the guide is missing many React best practices.
