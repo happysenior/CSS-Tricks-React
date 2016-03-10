@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon --watch server.js server.js --exec babel-node"
+    "start": "gulp"
   },
   "author": "Brad Westfall <brad@azpixels.com>",
   "license": "ISC",
