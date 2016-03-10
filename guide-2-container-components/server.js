@@ -53,4 +53,4 @@ app.use(function(err, req, res, next) {
 const port = 3000;
 app.listen(port);
 
-console.log('Visit: localhost:' + port);
+console.log('Serving: localhost:' + port);

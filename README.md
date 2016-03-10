@@ -93,7 +93,7 @@ Again, be sure to run these commands from the same path as where `webpack.config
 Babel allows us to write ES6 (and even ES7) code before the browser supports it. Like Webpack, Babel will re-write our ES6 code so that it's valid ES5 and understood by the browser. You might ask why we would want to write in future versions of JavaScript that aren't even fully supported? Well, ES6 has all kinds of new syntaxes which is really nice to use. Plus, ES6 was finalized in 2015, which is why it's also called ES2015. It truly is the way of the future for JavaScript so getting familiar with it sooner-than-later is best. Many React guides use ES6, so getting familiar with it will also help you learn React.
 
 
-## Extra Tips
+## Extra Tips and Tricks
 
 
 ### JSX with Sublime
