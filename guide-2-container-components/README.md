@@ -177,7 +177,7 @@ Which would allow the child component to now access the user's name like this: `
 
 ### Spread operator to the rescue!
 
-With the spread operator, we can write the parent component like this:
+With the spread operator, we can now write the parent component like this:
 
 ```js
 // Parent Component's render method
