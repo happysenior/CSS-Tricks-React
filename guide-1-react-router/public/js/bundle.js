@@ -25071,8 +25071,8 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = _react2.default.createClass({
-	  displayName: "widget-list",
+	var WidgetList = _react2.default.createClass({
+	  displayName: "WidgetList",
 	
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -25096,6 +25096,8 @@
 	    );
 	  }
 	});
+	
+	exports.default = WidgetList;
 
 /***/ }
 /******/ ]);
