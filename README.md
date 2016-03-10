@@ -11,7 +11,7 @@ This repo is for CSS-Tricks' [React: A Three-Part Series](#needurl). This docume
 Each guide will have a README file for its specific documentation:
 
 - [Guide 1: React Router](https://github.com/bradwestfall/CSS-Tricks-React-Series/tree/master/guide-1-react-router)
-- Guide 2: Container Components (Coming Soon)
+- [Guide 2: Container Components](https://github.com/bradwestfall/CSS-Tricks-React-Series/tree/master/guide-2-container-components)
 - Guide 3: Redux (Coming Soon)
 
 
@@ -58,7 +58,7 @@ If you're worried that Webpack bundling the code will mean that DevTools (or sim
 
 For running the code in these guides, you don't even need to think about Webpack. The builds are already made before you do the clone of this repo. However, if you want to make any changes to the front-end (React) JavaScript, then you will have to use Webpack to re-build the `bundle.js` file.
 
-### So how do you install Webpack?
+### So how do I use Webpack?
 
 For these guides you won't need to install Webpack globally. The `npm install` command will install a version of Webpack that gulp uses. To launch Webpack from gulp, type:
 
