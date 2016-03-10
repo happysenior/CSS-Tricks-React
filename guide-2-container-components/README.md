@@ -20,6 +20,10 @@ If you want to edit the React code, you'll have to re-build the `public/js/bundl
 gulp watch
 ```
 
+# Learning the code
+
+If you jump into the code, I would advise looking at Widgets before Users. There's much less code to look at for Widgets and the code that is there is basically the exact same as for Users, although Users just has more.
+
 
 # Implementation Details
 
