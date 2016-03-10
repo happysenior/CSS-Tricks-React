@@ -42,5 +42,14 @@
       "worksOn": "Babel"
     }
   ],
-  "widgets": []
+  "widgets": [
+    {
+      "id": 1,
+      "name": "Widget Two"
+    },
+    {
+      "id": 2,
+      "name": "Widget One"
+    }
+  ]
 }
