@@ -66,7 +66,7 @@ For these guides you won't need to install Webpack globally. The `npm install` c
 gulp watch
 ```
 
-This launches Webpack watches for changes in the `/app` folder.
+This launches Webpack and watches for changes in the `/app` folder.
 
 Note that the `gulp` command will launch the Node server and the `gulp watch` command takes care of the React/Webpack part. So you'll want to run these commands in two separate tabs if you want to have the server running and to be making React code changes.
 
