@@ -60,7 +60,7 @@ For running the code in these guides, you don't even need to think about Webpack
 
 ### So how do I use Webpack?
 
-For these guides you won't need to install Webpack globally. The `npm install` command will install a version of Webpack that gulp uses. To launch Webpack from gulp, type:
+For these guides you won't need to install Webpack globally. The `npm install` command from before will install a version of Webpack that gulp uses. To launch Webpack from gulp, type:
 
 ```sh
 gulp watch
