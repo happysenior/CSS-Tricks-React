@@ -68,7 +68,7 @@ gulp watch
 
 This launches Webpack and watches for changes in the `/app` folder.
 
-Note that running simply `gulp` will launch the Node server whereas `gulp watch` takes care of the React/Webpack part. So you'll want to run these commands in two separate tabs if you want to have the server running and to be making React code changes.
+Note that simply running `gulp` will launch the Node server whereas `gulp watch` takes care of the React/Webpack part. So you'll want to run these commands in two separate tabs if you want to have the server running and to be making React code changes.
 
 ### Other configurations
 
