@@ -1,4 +1,4 @@
-# React: A Three-Part Series
+# CSS-Tricks: Leveling Up With React, A Three-Part Series
 
 This repo is for CSS-Tricks' [React: A Three-Part Series](#needurl). This documentation will show you:
 
