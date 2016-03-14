@@ -18,12 +18,10 @@ Each series comes with its own guide in this repo. Each guide will have a README
 
 ## Installing and Running Code
 
-There are three guides in this repo that correspond to the three CSS-Tricks articles. Each guide serves as a distinct project and each will need to be npm-installed and ran separately.
-
-Start by cloning this repo and installing the React Router guide:
+Each of the three guides needs to be npm-installed and ran separately. Start by cloning this repo and installing the first guide for React Router:
 
 ```sh
-cd guide-1-react-router
+cd path/to/guide-1-react-router
 npm install
 gulp
 ```
