@@ -9,7 +9,7 @@ This repo is for a [CSS-Tricks series on React](https://css-tricks.com/learning-
 
 ## Guide Documentation
 
-Each guide will have a README file for its specific documentation:
+Each series comes with it's own guide in this repo. Each guide will have a README file for its specific documentation:
 
 - [Guide 1: React Router](https://github.com/bradwestfall/CSS-Tricks-React-Series/tree/master/guide-1-react-router)
 - [Guide 2: Container Components](https://github.com/bradwestfall/CSS-Tricks-React-Series/tree/master/guide-2-container-components)
