@@ -51,7 +51,7 @@ gulp.task('serve:api', ['restore-database'], function(done) {
 
 gulp.task('serve:node', function(done) {
   nodemon({
-    exec: 'DEBUG=cteaz* ./node_modules/.bin/babel-node ./server.js',
+    exec: './node_modules/.bin/babel-node ./server.js',
     watch: ['server.js'],
     ext: 'js html'
   });
