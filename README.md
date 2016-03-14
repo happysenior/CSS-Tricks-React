@@ -1,10 +1,11 @@
 # CSS-Tricks: Leveling Up With React, A Three-Part Series
 
-This repo is for a [CSS-Tricks series on React](https://css-tricks.com/learning-react-router/). This documentation will show you:
+This repo is for a [CSS-Tricks series on React](https://css-tricks.com/learning-react-router/). The documentation in this repo will show you many things that weren't shown in the series, such as
 
 - Steps for installing and running the code
 - An explanation of the Webpack and Babel setup
 - Extra Tips and Tricks
+- New ES6 Syntax
 
 ## Guide Documentation
 
