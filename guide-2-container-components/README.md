@@ -173,7 +173,7 @@ In the guide, you can see this behavior on the [`user-profile-container.js`](htt
 
 In the CSS-Tricks tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however there was reference to it in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa).
 
-The problem is that sometimes functions like `deleteUser()` need to be called with argument dynamically based on the context of the event binding. In other words, all the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. With the reference to the 'deleteUser()' method being in a loop, how do we ensure that when each one is called, it will call `deleteUser` with the correct user context?
+The problem is that sometimes functions like `deleteUser()` need to be called with argument dynamically based on the context of the event binding. In other words, all the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. With the reference to the `deleteUser()` method being in a loop, how do we ensure that when each one is called, it will call `deleteUser` with the correct user context?
 
 #### .bind()
 
