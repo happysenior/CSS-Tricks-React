@@ -6,9 +6,7 @@ import axios from 'axios';
 
 export function getWidgetList() {
   return axios.get('http://localhost:3001/widgets')
-    .then(function(response) {
-      return response.data;
-    });
+    .then(response => response.data);
 }
 
 /**

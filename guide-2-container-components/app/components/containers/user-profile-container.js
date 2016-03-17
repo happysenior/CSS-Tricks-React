@@ -15,10 +15,9 @@ const UserProfileContainer = React.createClass({
   },
 
   componentWillMount: function() {
-    let _this = this;
     let userId = this.props.params.userId
-    getProfile(userId).then(function(profile) {
-      _this.setState({
+    getProfile(userId).then(profile => {
+      this.setState({
         name: profile.name,
         imageUrl: profile.imageUrl,
         twitter: profile.twitter,

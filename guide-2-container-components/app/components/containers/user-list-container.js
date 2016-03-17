@@ -15,16 +15,14 @@ const UserListContainer = React.createClass({
   },
 
   refreshUserList: function() {
-    const _this = this;
-    getUserList().then(function(users) {
-      _this.setState({users: users})
+    getUserList().then(users => {
+      this.setState({users: users})
     });
   },
 
   deleteUser: function(userId) {
-    const _this = this;
-    deleteUser(userId).then(function() {
-      _this.refreshUserList();
+    deleteUser(userId).then(() => {
+      this.refreshUserList();
     });
   },
 

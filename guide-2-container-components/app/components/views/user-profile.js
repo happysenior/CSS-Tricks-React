@@ -11,7 +11,7 @@ export default function(props) {
         <h3>Github Repos:</h3>
         <ul className="repos">
 
-          {props.repos.map(function(repo) {
+          {props.repos.map(repo => {
 
             return (<li key={repo.id}><a href={repo.html_url}>{repo.name}</a></li>);
 

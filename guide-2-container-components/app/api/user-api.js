@@ -6,9 +6,7 @@ import axios from 'axios';
 
 export function getUserList() {
   return axios.get('http://localhost:3001/users')
-    .then(function(response) {
-      return response.data;
-    });
+    .then(response => response.data);
 }
 
 /**
@@ -33,7 +31,7 @@ export function getProfile(userId) {
 
   // Get the user data from our local database
   return axios.get('http://localhost:3001/users/' + userId)
-    .then(function (response) {
+    .then(response => {
 
       let user = response.data;
       profile.name = user.name;
@@ -46,7 +44,7 @@ export function getProfile(userId) {
       return Promise.all([
         axios.get('https://api.github.com/users/' + user.github),
         axios.get('https://api.github.com/users/' + user.github + '/repos')
-      ]).then(function(results) {
+      ]).then(results => {
 
         let githubProfile = results[0].data;
         let githubRepos = results[1].data;

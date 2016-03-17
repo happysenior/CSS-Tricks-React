@@ -15,16 +15,14 @@ const WidgetListContainer = React.createClass({
   },
 
   refreshWidgetList: function() {
-    const _this = this;
-    getWidgetList().then(function(widgets) {
-      _this.setState({widgets: widgets})
+    getWidgetList().then(widgets => {
+      this.setState({widgets: widgets})
     });
   },
 
   deleteWidget: function(widgetId) {
-    const _this = this;
-    deleteWidget(widgetId).then(function() {
-      _this.refreshWidgetList();
+    deleteWidget(widgetId).then(() => {
+      this.refreshWidgetList();
     });
   },
 

@@ -24977,15 +24977,17 @@
 	
 	  refreshUserList: function refreshUserList() {
 	    var _this = this;
+	
 	    (0, _userApi.getUserList)().then(function (users) {
 	      _this.setState({ users: users });
 	    });
 	  },
 	
 	  deleteUser: function deleteUser(userId) {
-	    var _this = this;
+	    var _this2 = this;
+	
 	    (0, _userApi.deleteUser)(userId).then(function () {
-	      _this.refreshUserList();
+	      _this2.refreshUserList();
 	    });
 	  },
 	
@@ -26249,6 +26251,7 @@
 	
 	  componentWillMount: function componentWillMount() {
 	    var _this = this;
+	
 	    var userId = this.props.params.userId;
 	    (0, _userApi.getProfile)(userId).then(function (profile) {
 	      _this.setState({
@@ -26377,15 +26380,17 @@
 	
 	  refreshWidgetList: function refreshWidgetList() {
 	    var _this = this;
+	
 	    (0, _widgetApi.getWidgetList)().then(function (widgets) {
 	      _this.setState({ widgets: widgets });
 	    });
 	  },
 	
 	  deleteWidget: function deleteWidget(widgetId) {
-	    var _this = this;
+	    var _this2 = this;
+	
 	    (0, _widgetApi.deleteWidget)(widgetId).then(function () {
-	      _this.refreshWidgetList();
+	      _this2.refreshWidgetList();
 	    });
 	  },
 	

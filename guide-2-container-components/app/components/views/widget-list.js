@@ -6,7 +6,7 @@ export default function(props) {
   return (
     <div className="data-list">
 
-      {props.widgets.map(function(widget) {
+      {props.widgets.map(widget => {
 
         return (
           <div key={widget.id} className="data-list-item">
