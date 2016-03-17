@@ -1,6 +1,20 @@
 {
   "users": [
     {
+      "id": 1,
+      "name": "Michael Jackson",
+      "github": "mjackson",
+      "twitter": "mjackson",
+      "worksOn": "React Router"
+    },
+    {
+      "id": 2,
+      "name": "Ryan Florence",
+      "github": "ryanflorence",
+      "twitter": "ryanflorence",
+      "worksOn": "React Router"
+    },
+    {
       "id": 3,
       "name": "Dan Abramov",
       "github": "gaearon",
@@ -28,5 +42,14 @@
       "worksOn": "Babel"
     }
   ],
-  "widgets": []
+  "widgets": [
+    {
+      "id": 1,
+      "name": "Widget Two"
+    },
+    {
+      "id": 2,
+      "name": "Widget One"
+    }
+  ]
 }
