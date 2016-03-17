@@ -57,7 +57,7 @@ A `GET` request to _localhost:3001/users_ will return a JSON array which resembl
 
 A `DELETE` request to _localhost:3001/users/3_ will delete the record where `id:3`.
 
-Since I knew that you might mess with the data (like a few deletes), I made it so each time you restart the server with `gulp` will restore the original database - so delete away!
+Since I knew that you might mess with the data (like a few deletes), I made it so each time you restart the server with the `gulp` command, the original database data will be restored - so delete away!
 
 
 ## Organization
