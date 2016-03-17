@@ -171,13 +171,27 @@ In the guide, you can see this behavior on the [`user-profile-container.js`](htt
 
 ## Delete Strategy
 
-In the tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however it was in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa) though.
+In the CSS-Tricks tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however there was reference to it in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa).
 
-The problem is that the `deleteUser()` method needs to know which user to delete. All the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. So we tell React that when it calls the `deleteUser()` method, to do so with the respective user's `id`. This is what is happening here:
+The problem is that sometimes functions like `deleteUser()` need to have arguments based on the context of the event binding. In other words, all the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. With the reference to the 'deleteUser()' method being in a loop, how do we ensure that when each one is called, it will call `deleteUser` with the correct user context?
+
+### .bind()
+
+To do this, we can use the `.bind()` method:
 
 ```js
 <button onClick={props.deleteUser.bind(null, user.id)}>Delete</button>
 ```
+
+Note that we don't want to call the `deleteUser()` method right now while the button is being created. Had we done:
+
+```js
+<button onClick={props.deleteUser(user.id)}>Delete</button>
+```
+
+This would call `deleteUser()` the very moment the button is created. By leaving off the parenthisis, we are indicating in JavaScript that this is a reference to a function name, not actually calling the function. Then with the `.bind()` part, we're telling JavaScript that when it does call this method, do so with `user.id` as it's first argument.
+
+## Refresh the user list after the XHR request
 
 The `deleteUser()` method on the Container Component will now receive a `userId` which is correct for each user. When it does so, it will delete the user with a XHR request and then it refreshes the whole user list with another XHR request. I chose this strategy simply because it was easier to write and understand. Another strategy could be to simply remove the DOM node of the user that was deleted when the first XHR request returned. These are the types of implementation strategies that you'll have to decide on your own.
 
