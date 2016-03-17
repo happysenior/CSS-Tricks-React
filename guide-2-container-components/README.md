@@ -83,7 +83,7 @@ As discussed in the tutorial, we use [axios](https://github.com/mzabriskie/axios
 
 ## Delete Strategy
 
-In the tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however it was in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa) though
+In the tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however it was in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa) though.
 
 The problem is that the `deleteUser()` method needs to know which user to delete. All the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. So we tell React that when it calls the `deleteUser()` method, to do so with the respective user's `id`. This is what is happening here:
 
@@ -119,7 +119,7 @@ deleteUser: (userId) => {
 },
 ```
 
-At first, it may seem that it's just new syntax sugar and that it only saves some characters, so who cares? But actually, there's a cool feature they have that the old way doesn't
+At first, it may seem that it's just new syntax sugar and that it only saves some characters, so who cares? But actually, there's a cool feature they have that the old way doesn't.
 
 Inside the `deleteUser()` method, we created `_this` to save our object context so that we can call `_this.refreshUserList()` inside the callback for `.then()`. But with arrow functions, the `this` keyword doesn't adopt the context of the arrow function, instead it preserves the parent version of `this`. That means we could have written the code without creating `_this`:
 
