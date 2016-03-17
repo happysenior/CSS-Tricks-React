@@ -73,17 +73,17 @@ This was just the simplest way to organize this small codebase. I make no claims
 
 ## Search Layout
 
-The concept of the Search Layout was mostly done to convey nested layouts in the first tutorial. It doesn't have a whole lot of real purpose like a search bar, but in this guide it just has some static information which doesn't change. In the third guide, we will make this information more meaningful.
+The main purpose of the Search Layout component was to convey nested layouts in the first tutorial. It doesn't yet serve us any in the Container Components tutorial to utilize it. Therefore, it just has some static information which is not yet hooked up to state. In the third guide, we will make this information more meaningful.
 
 
 ## Axios
 
-As discussed in the tutorial, we use [axios](https://github.com/mzabriskie/axios) for our AJAX (XHR) requests. However, the components don't make XHR requests directly from their `componentWillMount()` methods as the tutorial showed. Instead, all database API requests exist in the `/app/api` folder. This just helps keep the components cleaner looking and smaller.
+As discussed in the tutorial, we use [axios](https://github.com/mzabriskie/axios) for our AJAX (XHR) requests. However, the components don't make XHR requests directly from their `componentDidMount()` methods as the tutorial showed. Instead, all database API requests exist in the `/app/api` folder. The `componentDidMount()` methods will use those outside files for XHR requests. This just helps keep the component size down and helps them to look cleaner.
 
 
 ## Delete Strategy
 
-In the tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered in the tutorial.
+In the tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however it was in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa) though
 
 The problem is that the `deleteUser()` method needs to know which user to delete. All the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. So we tell React that when it calls the `deleteUser()` method, to do so with the respective user's `id`. This is what is happening here:
 
