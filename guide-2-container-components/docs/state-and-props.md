@@ -3,7 +3,7 @@
 In the tutorial, we made reference to this code:
 
 ```js
-const UserList = React.createClass({
+var UserList = React.createClass({
   getInitialState: function() {
     return {
       users: []
@@ -11,7 +11,7 @@ const UserList = React.createClass({
   },
 
   componentDidMount: function() {
-    const _this = this;
+    var _this = this;
     $.get('/path/to/user-api').then(function(response) {
       _this.setState({users: response})
     });
