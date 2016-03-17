@@ -180,13 +180,19 @@ The problem is that sometimes functions like `deleteUser()` need to be called wi
 To do this, we can use the `.bind()` method:
 
 ```js
-<button onClick={props.deleteUser.bind(null, user.id)}>Delete</button>
+// Correct
+{props.users.map(user => {
+  <button onClick={props.deleteUser.bind(null, user.id)}>Delete</button>
+})}
 ```
 
 Note that we don't want to call the `deleteUser()` method right now while the button is being created. Had we done:
 
 ```js
+// Incorrect
+{props.users.map(user => {
 <button onClick={props.deleteUser(user.id)}>Delete</button>
+})}
 ```
 
 This would call `deleteUser()` the very moment the button is created. By leaving off the parenthisis, we are indicating in JavaScript that this is a reference to a function name, not actually calling the function. Then with the `.bind()` part, we're telling JavaScript that when it does call this method, do so with `user.id` as it's first argument.
