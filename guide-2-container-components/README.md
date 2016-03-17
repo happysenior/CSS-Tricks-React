@@ -134,9 +134,9 @@ deleteUser: (userId) => {
 
 ## ES6 Spread Operator
 
-Be sure to look up and study the new [ES6 spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator). It's my favorite new feature in ES6!
+Be sure to look up and study the new [ES6 spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator). It goes really well with React!
 
-With how React uses attributes to pass props from parent component to child component, the spread operator can make this process even easier.
+Considering how React uses attributes to pass props and state from parent to child component, the spread operator can make this process even easier.
 
 Imagine we wanted to pass an object from parent component to child component:
 
