@@ -113,9 +113,8 @@ deleteUser: function(userId) {
 
 // New way with ES6 Arrow Functions
 deleteUser: (userId) => {
-  const _this = this;
   deleteUser(userId).then(() => {
-    _this.refreshUserList();
+    this.refreshUserList();
   });
 },
 ```
