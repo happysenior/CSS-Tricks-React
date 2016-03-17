@@ -182,7 +182,9 @@ To do this, we can use the `.bind()` method:
 ```js
 // Correct
 {props.users.map(user => {
-  <button onClick={props.deleteUser.bind(null, user.id)}>Delete</button>
+  return (
+    <button onClick={props.deleteUser.bind(null, user.id)}>Delete</button>
+  );
 })}
 ```
 
@@ -191,7 +193,9 @@ Note that we don't want to call the `deleteUser()` method right now while the bu
 ```js
 // Incorrect
 {props.users.map(user => {
-  <button onClick={props.deleteUser(user.id)}>Delete</button>
+  return (
+    <button onClick={props.deleteUser(user.id)}>Delete</button>
+  );
 })}
 ```
 
