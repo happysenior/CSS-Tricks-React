@@ -32,11 +32,11 @@ Here are some details for this guide that weren't covered in the tutorial:
 
 ## JSON Server
 
-For Guide 2 and 3, we will use [JSON Server](https://github.com/typicode/json-server) to give us the feel of having a real database. It will need to run on a different port from our Node server though, so it runs on _localhost:3001_.
+For Guide 2 and 3, we will use __JSON Server__ to give us the feel of having a real database. It will need to run on a different port from our Node server though, so it runs on _localhost:3001_.
 
 Launching the Node server with `gulp` now also launches JSON Server.
 
-They have great documentation if you want to learn more about how it works, but in short, they create a RESTful API for us to `GET`, `POST`, `PUT`, and `DELETE` to. In this guide, we can use those HTTP verbs on the `/users` path as follows:
+They have [great documentation](https://github.com/typicode/json-server) if you want to learn more about how it works, but in short, they create a RESTful API for us to `GET`, `POST`, `PUT`, and `DELETE` to. In this guide, we can use those HTTP verbs on the `/users` path as follows:
 
 A `GET` request to _localhost:3001/users_ will return a JSON array which resembles:
 
