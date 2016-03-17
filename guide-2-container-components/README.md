@@ -124,14 +124,12 @@ At first, it may seem that it's just new syntax sugar and that it only saves som
 Inside the `deleteUser()` method, we created `_this` to save our object context so that we can call `_this.refreshUserList()` inside the callback for `.then()`. But with arrow functions, the `this` keyword doesn't adopt the context of the arrow function, instead it preserves the parent version of `this`. That means we could have written the code without creating `_this`:
 
 ```js
-deleteUser: function(userId) {
+deleteUser: (userId) => {
   deleteUser(userId).then(() => {
     this.refreshUserList();
   });
 },
 ```
-
-Note that I kept the `function` word on the outer function to show that has nothing to do with our ability to omit `_this` in this example. It's the `.then()` callback that uses an arrow function now which means the `this` inside of it doesn't refer to that arrow function, but rather it refers to the same `this` as the `deleteuser()` method would create.
 
 
 ## ES6 Spread Operator
