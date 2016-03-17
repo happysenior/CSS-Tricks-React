@@ -195,10 +195,10 @@ Note that we don't want to call the `deleteUser()` method right now while the bu
 })}
 ```
 
-This would call `deleteUser()` the very moment the button is created. By leaving off the parenthesis, we are indicating in JavaScript that this is a reference to a function name, not actually calling the function. Then with the `.bind()` part, we're telling JavaScript that when it does call this method, do so with `user.id` as it's first argument.
+This would call `deleteUser()` the very moment the button is created. By leaving off the parenthesis, we are indicating in JavaScript that this is a reference to a function name, not actually calling the function. Then with the `.bind()` part, we're telling JavaScript that when it does call this method, do so with `user.id` as it's first argument. The `deleteUser()` method on the Container Component will now receive a `userId` which is correct for each user.
 
 #### Refresh the user list after the XHR request
 
-The `deleteUser()` method on the Container Component will now receive a `userId` which is correct for each user. When it does so, it will delete the user with a XHR request and then it refreshes the whole user list with another XHR request. I chose this strategy simply because it was easier to write and understand. Another strategy could be to simply remove the DOM node of the user that was deleted when the first XHR request returned. These are the types of implementation strategies that you'll have to decide on your own.
+In the XHR callbacks to delete users and widgets, the code refreshes the whole list with another XHR request. I chose this strategy simply because it was easier to write and understand. Another strategy could be to simply remove the DOM node of the user that was deleted when the first XHR request returned. These are the types of implementation strategies that you'll have to decide on your own.
 
-One important thing to know is that with either strategy, you don't need to reach into the DOM yourself to make the update. That would be a very jQuery-ish way of thinking about how to solve this problem. With either strategy, all we need to do for the DOM update is to change the state. By doing that, the component will re-render automatically and the DOM will be changed.
+One important thing to know is that with either strategy, you don't need to reach into the DOM yourself to make DOM updates. That would be a very "jQuery-style" way of thinking about how to solve this problem. All we really need to do for the DOM update is to change the state. By doing that, the component will re-render automatically and the DOM will be changed.
