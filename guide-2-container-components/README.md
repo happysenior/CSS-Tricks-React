@@ -96,24 +96,22 @@ The `deleteUser()` method on the Container Component will now receive a `userId`
 One important thing to know is that with either strategy, you don't need to reach into the DOM yourself to make the update. That would be a very jQuery-ish way of thinking about how to solve this problem. With either strategy, all we need to do for the DOM update is to change the state. By doing that, the component will re-render automatically and the DOM will be changed.
 
 
-## ES6 Arrow Functions (or lack-there-of)
+## ES6 Arrow Functions
 
-ES6 arrow functions are very popular in React tutorials online. I chose not to use them in this guide because you're probably slightly overwhelmed with many other concepts and the least I can do is make the code more familiar by leaving them out. I will briefly explain them here though since we will make use of them in the third guide.
-
-ES6 Arrow Functions allow us to write like this:
+ES6 arrow functions are very popular in React tutorials online. While the CSS-Tricks tutorial doesn't use ES6 features, the code at this guide will. Here's a brief explaination of how they work:
 
 ```js
 // Old way with ES5
 deleteUser: function(userId) {
   var _this = this;
-  deleteUser(userId).then(function() {
+  userApi.deleteUser(userId).then(function() {
     _this.refreshUserList();
   });
 },
 
 // New way with ES6 Arrow Functions
 deleteUser: (userId) => {
-  deleteUser(userId).then(() => {
+  userApi.deleteUser(userId).then(() => {
     this.refreshUserList();
   });
 },
@@ -121,16 +119,9 @@ deleteUser: (userId) => {
 
 At first, it may seem that it's just new syntax sugar and that it only saves some characters, so who cares? But actually, there's a cool feature they have that the old way doesn't.
 
-Inside the `deleteUser()` method, we created `_this` to save our object context so that we can call `_this.refreshUserList()` inside the callback for `.then()`. But with arrow functions, the `this` keyword doesn't adopt the context of the arrow function, instead it preserves the parent version of `this`. That means we could have written the code without creating `_this`:
+The API call is a Promise which has a `.then` method and a callback. In the first example, we must bind `this` to `_this` to preserve it for the callback. But arrow functions don't use lexical scope which means the `this` keyword inside them is still referencing the outer `this`. This means we no longer need to do the `var _this = this` trick.
 
-```js
-deleteUser: (userId) => {
-  deleteUser(userId).then(() => {
-    this.refreshUserList();
-  });
-},
-```
-
+For this guide, all callback functions use arrow functions.
 
 ## ES6 Spread Operator
 
