@@ -102,7 +102,7 @@ deleteUser: (userId) => {
 },
 ```
 
-At first, it may seem that it's just new syntax sugar and that it only saves some characters, so who cares? But actually, there's a cool feature they have that the old way doesn't.
+At first, it may seem that it's just new syntax sugar and that it only saves some characters since we don't have to type the word "function", so who cares? But actually, there's a cool feature they have that the old way doesn't.
 
 The API call is a Promise which has a `.then` method and a callback. In the first example, we must bind `this` to `_this` to preserve it for the callback. But arrow functions don't use lexical scope which means the `this` keyword inside them is still referencing the outer `this`. This means we no longer need to do the `var _this = this` trick.
 
