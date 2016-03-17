@@ -81,21 +81,6 @@ The main purpose of the Search Layout component was to convey nested layouts in 
 As discussed in the tutorial, we use [axios](https://github.com/mzabriskie/axios) for our AJAX (XHR) requests. However, the components don't make XHR requests directly from their `componentDidMount()` methods as the tutorial showed. Instead, all database API requests exist in the `/app/api` folder. The `componentDidMount()` methods will use those outside files for XHR requests. This just helps keep the component size down and helps them to look cleaner.
 
 
-## Delete Strategy
-
-In the tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however it was in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa) though.
-
-The problem is that the `deleteUser()` method needs to know which user to delete. All the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. So we tell React that when it calls the `deleteUser()` method, to do so with the respective user's `id`. This is what is happening here:
-
-```js
-<button onClick={props.deleteUser.bind(null, user.id)}>Delete</button>
-```
-
-The `deleteUser()` method on the Container Component will now receive a `userId` which is correct for each user. When it does so, it will delete the user with a XHR request and then it refreshes the whole user list with another XHR request. I chose this strategy simply because it was easier to write and understand. Another strategy could be to simply remove the DOM node of the user that was deleted when the first XHR request returned. These are the types of implementation strategies that you'll have to decide on your own.
-
-One important thing to know is that with either strategy, you don't need to reach into the DOM yourself to make the update. That would be a very jQuery-ish way of thinking about how to solve this problem. With either strategy, all we need to do for the DOM update is to change the state. By doing that, the component will re-render automatically and the DOM will be changed.
-
-
 ## ES6 Arrow Functions
 
 ES6 arrow functions are very popular in React tutorials online. While the CSS-Tricks tutorial doesn't use ES6 features, the code at this guide will. Here's a brief explaination of how they work:
@@ -183,3 +168,17 @@ render: function() {
 This is a nice way to write code for the parent and the child gets to access the props like this: `this.props.name`, `this.props.occupation` and `this.props.state`.
 
 In the guide, you can see this behavior on the [`user-profile-container.js`](https://github.com/bradwestfall/CSS-Tricks-React-Series/blob/master/guide-2-container-components/app/components/containers/user-profile-container.js#L33) file.
+
+## Delete Strategy
+
+In the tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however it was in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa) though.
+
+The problem is that the `deleteUser()` method needs to know which user to delete. All the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. So we tell React that when it calls the `deleteUser()` method, to do so with the respective user's `id`. This is what is happening here:
+
+```js
+<button onClick={props.deleteUser.bind(null, user.id)}>Delete</button>
+```
+
+The `deleteUser()` method on the Container Component will now receive a `userId` which is correct for each user. When it does so, it will delete the user with a XHR request and then it refreshes the whole user list with another XHR request. I chose this strategy simply because it was easier to write and understand. Another strategy could be to simply remove the DOM node of the user that was deleted when the first XHR request returned. These are the types of implementation strategies that you'll have to decide on your own.
+
+One important thing to know is that with either strategy, you don't need to reach into the DOM yourself to make the update. That would be a very jQuery-ish way of thinking about how to solve this problem. With either strategy, all we need to do for the DOM update is to change the state. By doing that, the component will re-render automatically and the DOM will be changed.
