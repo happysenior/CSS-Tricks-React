@@ -14,7 +14,7 @@ gulp
 
 > The server will be available at localhost:3000
 
-If you want to edit the React code, you'll have to re-build the `public/js/bundle.js` file with Webpack. You'll probably want to open a new terminal tab so you can keep your server running. To rebuild with webpack, type:
+If you want to edit the React code, you'll have to re-build the `public/js/bundle.js` file with Webpack. You'll probably want to open a new terminal tab so you can keep your server running. To rebuild with Webpack, type:
 
 ```sh
 gulp watch
@@ -83,7 +83,7 @@ As discussed in the tutorial, we use [axios](https://github.com/mzabriskie/axios
 
 ## ES6 Arrow Functions
 
-ES6 arrow functions are very popular in React tutorials online. While the CSS-Tricks tutorial doesn't use ES6 features, the code at this guide will. Here's a brief explaination of how they work:
+ES6 arrow functions are very popular in React tutorials online. While the CSS-Tricks tutorial doesn't use ES6 features, the code at this guide will. Here's a brief explanation of how they work:
 
 ```js
 // Old way with ES5
@@ -191,11 +191,11 @@ Note that we don't want to call the `deleteUser()` method right now while the bu
 ```js
 // Incorrect
 {props.users.map(user => {
-<button onClick={props.deleteUser(user.id)}>Delete</button>
+  <button onClick={props.deleteUser(user.id)}>Delete</button>
 })}
 ```
 
-This would call `deleteUser()` the very moment the button is created. By leaving off the parenthisis, we are indicating in JavaScript that this is a reference to a function name, not actually calling the function. Then with the `.bind()` part, we're telling JavaScript that when it does call this method, do so with `user.id` as it's first argument.
+This would call `deleteUser()` the very moment the button is created. By leaving off the parenthesis, we are indicating in JavaScript that this is a reference to a function name, not actually calling the function. Then with the `.bind()` part, we're telling JavaScript that when it does call this method, do so with `user.id` as it's first argument.
 
 #### Refresh the user list after the XHR request
 
