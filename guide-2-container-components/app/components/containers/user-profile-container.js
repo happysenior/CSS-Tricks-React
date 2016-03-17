@@ -1,6 +1,6 @@
 import React from 'react';
 import UserProfile from '../views/user-profile';
-import { getProfile } from '../../api/user-api';
+import * as userApi from '../../api/user-api';
 
 const UserProfileContainer = React.createClass({
 
@@ -14,9 +14,9 @@ const UserProfileContainer = React.createClass({
     }
   },
 
-  componentWillMount: function() {
+  componentDidMount: function() {
     let userId = this.props.params.userId
-    getProfile(userId).then(profile => {
+    userApi.getProfile(userId).then(profile => {
       this.setState({
         name: profile.name,
         imageUrl: profile.imageUrl,

@@ -4,7 +4,7 @@ import axios from 'axios';
  * Get widgets
  */
 
-export function getWidgetList() {
+export function getList() {
   return axios.get('http://localhost:3001/widgets')
     .then(response => response.data);
 }

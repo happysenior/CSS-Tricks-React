@@ -24776,67 +24776,61 @@
 	  value: true
 	});
 	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRouter = __webpack_require__(160);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var MainLayout = _react2.default.createClass({
-	  displayName: 'MainLayout',
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'app' },
-	      _react2.default.createElement('header', { className: 'primary-header' }),
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'app' },
+	    _react2.default.createElement('header', { className: 'primary-header' }),
+	    _react2.default.createElement(
+	      'aside',
+	      { className: 'primary-aside' },
 	      _react2.default.createElement(
-	        'aside',
-	        { className: 'primary-aside' },
+	        'ul',
+	        null,
 	        _react2.default.createElement(
-	          'ul',
+	          'li',
 	          null,
 	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/', activeClassName: 'active' },
-	              'Home'
-	            )
-	          ),
+	            _reactRouter.Link,
+	            { to: '/', activeClassName: 'active' },
+	            'Home'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
 	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/users', activeClassName: 'active' },
-	              'Users'
-	            )
-	          ),
+	            _reactRouter.Link,
+	            { to: '/users', activeClassName: 'active' },
+	            'Users'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'li',
+	          null,
 	          _react2.default.createElement(
-	            'li',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/widgets', activeClassName: 'active' },
-	              'Widgets'
-	            )
+	            _reactRouter.Link,
+	            { to: '/widgets', activeClassName: 'active' },
+	            'Widgets'
 	          )
 	        )
-	      ),
-	      _react2.default.createElement(
-	        'main',
-	        null,
-	        this.props.children
 	      )
-	    );
-	  }
-	});
+	    ),
+	    _react2.default.createElement(
+	      'main',
+	      null,
+	      props.children
+	    )
+	  );
+	};
 	
-	exports.default = MainLayout;
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(160);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
 /* 218 */
@@ -24848,39 +24842,33 @@
 	  value: true
 	});
 	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var SearchLayout = _react2.default.createClass({
-	  displayName: "SearchLayout",
-	
-	  render: function render() {
-	    return _react2.default.createElement(
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "search" },
+	    _react2.default.createElement(
+	      "header",
+	      { className: "search-header" },
+	      "Users"
+	    ),
+	    _react2.default.createElement(
 	      "div",
-	      { className: "search" },
-	      _react2.default.createElement(
-	        "header",
-	        { className: "search-header" },
-	        "Users"
-	      ),
-	      _react2.default.createElement(
-	        "div",
-	        { className: "search-results" },
-	        this.props.children
-	      ),
-	      _react2.default.createElement(
-	        "footer",
-	        { className: "search-footer" },
-	        "6 Results"
-	      )
-	    );
-	  }
-	});
+	      { className: "search-results" },
+	      props.children
+	    ),
+	    _react2.default.createElement(
+	      "footer",
+	      { className: "search-footer" },
+	      "6 Results"
+	    )
+	  );
+	};
 	
-	exports.default = SearchLayout;
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
 /* 219 */
@@ -24959,6 +24947,10 @@
 	
 	var _userApi = __webpack_require__(222);
 	
+	var userApi = _interopRequireWildcard(_userApi);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var UserListContainer = _react2.default.createClass({
@@ -24971,14 +24963,14 @@
 	    };
 	  },
 	
-	  componentWillMount: function componentWillMount() {
+	  componentDidMount: function componentDidMount() {
 	    this.refreshUserList();
 	  },
 	
 	  refreshUserList: function refreshUserList() {
 	    var _this = this;
 	
-	    (0, _userApi.getUserList)().then(function (users) {
+	    userApi.getList().then(function (users) {
 	      _this.setState({ users: users });
 	    });
 	  },
@@ -24986,7 +24978,7 @@
 	  deleteUser: function deleteUser(userId) {
 	    var _this2 = this;
 	
-	    (0, _userApi.deleteUser)(userId).then(function () {
+	    userApi.deleteUser(userId).then(function () {
 	      _this2.refreshUserList();
 	    });
 	  },
@@ -25058,7 +25050,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getUserList = getUserList;
+	exports.getList = getList;
 	exports.deleteUser = deleteUser;
 	exports.getProfile = getProfile;
 	
@@ -25072,7 +25064,7 @@
 	 * Get users
 	 */
 	
-	function getUserList() {
+	function getList() {
 	  return _axios2.default.get('http://localhost:3001/users').then(function (response) {
 	    return response.data;
 	  });
@@ -25087,18 +25079,17 @@
 	}
 	
 	/**
-	 * getProfile() is much more complex than the previous functions.
-	 * This is because it has to make three XHR requests to get all the
-	 * profile info.
+	 * getProfile() is much more complex because it has to make
+	 * three XHR requests to get all the profile info.
 	 */
 	
 	function getProfile(userId) {
 	
 	  // Start with an empty profile object and build it up
-	  // from multiple XHR requests
+	  // from multiple XHR requests.
 	  var profile = {};
 	
-	  // Get the user data from our local database
+	  // Get the user data from our local database.
 	  return _axios2.default.get('http://localhost:3001/users/' + userId).then(function (response) {
 	
 	    var user = response.data;
@@ -25108,7 +25099,7 @@
 	
 	    // Then use the github attribute from the previous request to
 	    // sent two XHR requests to GitHub's API. The first for their
-	    // general user info, and the second for their repos
+	    // general user info, and the second for their repos.
 	    return Promise.all([_axios2.default.get('https://api.github.com/users/' + user.github), _axios2.default.get('https://api.github.com/users/' + user.github + '/repos')]).then(function (results) {
 	
 	      var githubProfile = results[0].data;
@@ -26233,6 +26224,10 @@
 	
 	var _userApi = __webpack_require__(222);
 	
+	var userApi = _interopRequireWildcard(_userApi);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var UserProfileContainer = _react2.default.createClass({
@@ -26249,11 +26244,11 @@
 	    };
 	  },
 	
-	  componentWillMount: function componentWillMount() {
+	  componentDidMount: function componentDidMount() {
 	    var _this = this;
 	
 	    var userId = this.props.params.userId;
-	    (0, _userApi.getProfile)(userId).then(function (profile) {
+	    userApi.getProfile(userId).then(function (profile) {
 	      _this.setState({
 	        name: profile.name,
 	        imageUrl: profile.imageUrl,
@@ -26362,6 +26357,10 @@
 	
 	var _widgetApi = __webpack_require__(244);
 	
+	var widgetApi = _interopRequireWildcard(_widgetApi);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var WidgetListContainer = _react2.default.createClass({
@@ -26374,14 +26373,14 @@
 	    };
 	  },
 	
-	  componentWillMount: function componentWillMount() {
+	  componentDidMount: function componentDidMount() {
 	    this.refreshWidgetList();
 	  },
 	
 	  refreshWidgetList: function refreshWidgetList() {
 	    var _this = this;
 	
-	    (0, _widgetApi.getWidgetList)().then(function (widgets) {
+	    widgetApi.getList().then(function (widgets) {
 	      _this.setState({ widgets: widgets });
 	    });
 	  },
@@ -26389,7 +26388,7 @@
 	  deleteWidget: function deleteWidget(widgetId) {
 	    var _this2 = this;
 	
-	    (0, _widgetApi.deleteWidget)(widgetId).then(function () {
+	    widgetApi.deleteWidget(widgetId).then(function () {
 	      _this2.refreshWidgetList();
 	    });
 	  },
@@ -26461,7 +26460,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getWidgetList = getWidgetList;
+	exports.getList = getList;
 	exports.deleteWidget = deleteWidget;
 	
 	var _axios = __webpack_require__(223);
@@ -26474,7 +26473,7 @@
 	 * Get widgets
 	 */
 	
-	function getWidgetList() {
+	function getList() {
 	  return _axios2.default.get('http://localhost:3001/widgets').then(function (response) {
 	    return response.data;
 	  });

@@ -1,6 +1,6 @@
 import React from 'react';
 import WidgetList from '../views/widget-list';
-import { getWidgetList, deleteWidget } from '../../api/widget-api';
+import * as widgetApi from '../../api/widget-api';
 
 const WidgetListContainer = React.createClass({
 
@@ -10,18 +10,18 @@ const WidgetListContainer = React.createClass({
     }
   },
 
-  componentWillMount: function() {
+  componentDidMount: function() {
     this.refreshWidgetList();
   },
 
   refreshWidgetList: function() {
-    getWidgetList().then(widgets => {
+    widgetApi.getList().then(widgets => {
       this.setState({widgets: widgets})
     });
   },
 
   deleteWidget: function(widgetId) {
-    deleteWidget(widgetId).then(() => {
+    widgetApi.deleteWidget(widgetId).then(() => {
       this.refreshWidgetList();
     });
   },
