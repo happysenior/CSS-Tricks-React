@@ -105,7 +105,7 @@ ES6 Arrow Functions allow us to write like this:
 ```js
 // Old way with ES5
 deleteUser: function(userId) {
-  const _this = this;
+  var _this = this;
   deleteUser(userId).then(function() {
     _this.refreshUserList();
   });
