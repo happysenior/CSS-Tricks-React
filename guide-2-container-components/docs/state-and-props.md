@@ -45,6 +45,6 @@ Then the `render` method is called and it loops over the `state.users` array whi
 
 Then a moment later, the AJAX call returns which `componentDidMount()` started. That will call a callback function which will set the state of the users array to be filled with the response of the AJAX call.
 
-Here's the cool part. Whenever state changes in a component, the component will automatically re-render. So even React called `render` once already when the users array was empty, now it's called again only this time the users array has data.
+Here's the cool part. Whenever state changes in a component, the component will automatically re-render. So even though React called `render` once already when the users array was empty, now it's called again, only this time the users array has data.
 
 For more information on these types of "Lifecycle" concepts, see the [React Documentation](https://facebook.github.io/react/docs/component-specs.html)
