@@ -41677,7 +41677,7 @@
 	        _react2.default.createElement(
 	          "strong",
 	          null,
-	          "Container Components"
+	          "Redux"
 	        ),
 	        ", there are still many implementation details in this code that the article doesn't cover. For a better understanding of those details, see the ",
 	        _react2.default.createElement(
