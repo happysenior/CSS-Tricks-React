@@ -30,10 +30,12 @@ gulp
 
 To run the code from the other guides, `cd` to their folders and run the `npm` steps again from their folder.
 
+Also note that you'll need to [globally install Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) first if you haven't already
+
 
 # Implementation Details
 
-The articles at CSS Tricks will be focused on their respective topics. They don't cover 100% of the concepts and implementation details of the code in the GitHub Guides. However, each guide will come with its own README.md file that tries to cover some of the implementation details, especially for ES6 concepts.
+The articles at CSS-Tricks will be focused on their respective topics. They don't cover 100% of the concepts and implementation details of the code in the GitHub Guides. However, each guide will come with its own _README.md_ file that tries to cover some of the implementation details, especially for ES6 concepts.
 
 It should also be noted that the guides leave out many formalities like validation, security (XSS, CSRF) and organizational details to stay focused on the topics. These guides are trying to convey the "bigger picture" of how React _can_ work in a Single Page Application. They do not necessarily serve as a "best-practices" starting point.
 
@@ -45,43 +47,27 @@ Each guide uses a very simple Express server which should take no configuration 
 
 ## Webpack
 
-Webpack is a bundler that allows you author multiple JavaScript files and have them bundled into one file for sending to the browser. If you're new to Webpack, here's a quick overview...
+Webpack is a bundler that allows you to author multiple JavaScript files and have them bundled into one file for sending to the browser. If you're new to Webpack, here's a quick overview...
 
-Your project (or in this case, each guide) will have a `webpack.config.js` file. This file tells Webpack about which JavaScript file is your main entry point. That entry file will "include" other JavaScript files that it needs, called dependencies. In turn, those files can "include" even more files. Webpack takes all the files in this process and bundles them into one output file, which you can also define in the `webpack.config.js` file.
+Your project (or in this case, each guide at this repo) will have a `webpack.config.js` file. This file tells Webpack about which JavaScript file is your main entry point. That entry file will "include" other JavaScript files that it needs, which are it's "dependencies". In turn, those files can "include" even more dependencies. Webpack takes all the files in this process and bundles them into one output file. You can define where Wepback saves that file also in `webpack.config.js`. These guides will bundle their code to `/public/js/bundle.js`.
 
-Webpack allows multiple ways to "include" JavaScript files into each other such as CommonJS (`require()` statements) or AMD. More recently though we can now use the ES6 way with `include` statements -- assuming you tell Webpack about how to use Babel (See the section below). These guides will use the ES6 way with Babel.
+The `bundle.js` file that Webpack creates will be the only JavaScript file sent to the browser. So the browser will start with all the JavaScript it needs for the application without making additional requests back to the server.
 
-The `bundle.js` file that Webpack creates will be the only JavaScript file sent to the browser. So the browser will start with all the JavaScript it will ever need for the application without making requests back to the server. However, the browser doesn't necessarily understand how some things work like CommonJS or ES6 includes. Therefore, Webpack will rewrite some of your JavaScript in ways that help the browser to understand it. Don't worry though, it won't break your code.
+Webpack allows multiple ways to indicate dependencies in JavaScript files. One way you'll see commonly online uses `require()` statements. That's a pattern called CommonJS. But more recently, JavaScript is in the process of adopting a new syntax called "ES6 modules" which use `include` statements. The browser doesn't understand either of these approaches, so Webpack will convert code written with CommonJS or ES6 modules into ES5 which the browser does understand. But Webpack will need a third party cool called Babel to use ES6 modules -- which is what these guides use for the app.
 
-If you're worried that Webpack bundling the code will mean that DevTools (or similar) will show the incorrect line numbers for errors, you don't have to worry because we've setup something called a source map. With Webpack, we've created a source map to tell DevTools which lines of code in the bundle correspond to which lines from your original files. When DevTools tells you there's an error, or if you need to do a `console.log`, it will report the correct file line numbers from your original files.
-
-For running the code in these guides, you don't even need to think about Webpack. The builds are already made before you do the clone of this repo. However, if you want to make any changes to the front-end (React) JavaScript, then you will have to use Webpack to re-build the `bundle.js` file.
-
-### So how do I use Webpack?
-
-For these guides you won't need to install Webpack globally. The `npm install` command from before will install a version of Webpack that gulp uses. To launch Webpack from gulp, type:
-
-```sh
-gulp watch
-```
-
-This launches Webpack and watches for changes in the `/app` folder.
+If this all sounds chaotic and difficult to setup, don't worry, all the work is already done. All you need to do is run the `npm install` and then the `gulp` and/or `gulp watch` commands from the install instructions.
 
 Note that simply running `gulp` will launch the Node server whereas `gulp watch` takes care of the React/Webpack part. So you'll want to run these commands in two separate tabs if you want to have the server running and to be making React code changes.
-
-### Other configurations
-
-If you don't use a gulp strategy in other projects, it probably makes more sense to [install Webpack globally](http://webpack.github.io/docs/installation.html) and
-run the `webpack` or `webpack -w` command directly from the command-line.
 
 
 ## Babel
 
-Babel allows us to write ES6 (and even ES7) code before the browser supports it. Like Webpack, Babel will re-write our ES6 code so that it's valid ES5 and understood by the browser. You might ask why we would want to write in future versions of JavaScript that aren't even fully supported? Well, ES6 has all kinds of new syntaxes which is really nice to use. Plus, ES6 was finalized in 2015, which is why it's also called ES2015. It truly is the way of the future for JavaScript so getting familiar with it sooner-than-later is best. Many React guides use ES6, so getting familiar with it will also help you learn React.
+Babel will tell Webpack how to convert ES6 (and even ES7) code to ES5. You might ask why we would want to write in future versions of JavaScript that aren't even fully supported? Well, there's new JavaScript syntax which is really nice to use. Plus, ES6 was finalized in 2015, which is why it's also called ES2015. So why should we have to wait for all browsers to catch up to a standard that's from 2015?
+
+Many React guides use ES6, so getting familiar with it will also help you learn React.
 
 
 # Extra Tips and Tricks
-
 
 ## JSX with Sublime
 
