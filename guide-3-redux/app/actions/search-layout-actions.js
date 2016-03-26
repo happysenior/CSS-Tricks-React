@@ -1,9 +1,9 @@
 import * as types from '../actions/action-types';
 
-export function loadSearchLayout(title, totalResults) {
+export function loadSearchLayout(searchType, title) {
   return {
     type: types.LOAD_SEARCH_LAYOUT,
-    title,
-    totalResults,
+    searchType,
+    title
   };
 }

@@ -12,7 +12,7 @@ const userReducer = function(state = initialState, action) {
 
   switch(action.type) {
 
-    case types.USER_LIST_SUCCESS:
+    case types.GET_USERS_SUCCESS:
       return Object.assign({}, state, { users: action.users });
 
     case types.DELETE_USER_SUCCESS:

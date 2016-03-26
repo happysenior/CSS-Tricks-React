@@ -21224,7 +21224,7 @@
 	
 	  switch (action.type) {
 	
-	    case types.USER_LIST_SUCCESS:
+	    case types.GET_USERS_SUCCESS:
 	      return Object.assign({}, state, { users: action.users });
 	
 	    case types.DELETE_USER_SUCCESS:
@@ -21255,12 +21255,12 @@
 	  value: true
 	});
 	// Users
-	var USER_LIST_SUCCESS = exports.USER_LIST_SUCCESS = 'USER_LIST_SUCCESS';
+	var GET_USERS_SUCCESS = exports.GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 	var DELETE_USER_SUCCESS = exports.DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 	var USER_PROFILE_SUCCESS = exports.USER_PROFILE_SUCCESS = 'USER_PROFILE_SUCCESS';
 	
 	// Widgets
-	var WIDGET_LIST_SUCCESS = exports.WIDGET_LIST_SUCCESS = 'WIDGET_LIST_SUCCESS';
+	var GET_WIDGETS_SUCCESS = exports.GET_WIDGETS_SUCCESS = 'GET_WIDGETS_SUCCESS';
 	var DELETE_WIDGET_SUCCESS = exports.DELETE_WIDGET_SUCCESS = 'DELETE_WIDGET_SUCCESS';
 	
 	// Search Layout
@@ -36395,7 +36395,7 @@
 	
 	  switch (action.type) {
 	
-	    case types.WIDGET_LIST_SUCCESS:
+	    case types.GET_WIDGETS_SUCCESS:
 	      return Object.assign({}, state, { widgets: action.widgets });
 	
 	    case types.DELETE_WIDGET_SUCCESS:
@@ -36430,8 +36430,8 @@
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	var initialState = {
-	  title: '',
-	  totalResults: 0
+	  searchType: '',
+	  title: ''
 	};
 	
 	var searchLayoutReducer = function searchLayoutReducer() {
@@ -36443,8 +36443,8 @@
 	
 	    case types.LOAD_SEARCH_LAYOUT:
 	      return Object.assign({}, state, {
-	        title: action.title,
-	        totalResults: action.totalResults
+	        searchType: action.searchType,
+	        title: action.title
 	      });
 	
 	  }
@@ -36478,19 +36478,19 @@
 	
 	var _searchLayoutContainer2 = _interopRequireDefault(_searchLayoutContainer);
 	
-	var _home = __webpack_require__(249);
+	var _home = __webpack_require__(273);
 	
 	var _home2 = _interopRequireDefault(_home);
 	
-	var _userListContainer = __webpack_require__(250);
+	var _userListContainer = __webpack_require__(274);
 	
 	var _userListContainer2 = _interopRequireDefault(_userListContainer);
 	
-	var _userProfileContainer = __webpack_require__(272);
+	var _userProfileContainer = __webpack_require__(276);
 	
 	var _userProfileContainer2 = _interopRequireDefault(_userProfileContainer);
 	
-	var _widgetListContainer = __webpack_require__(274);
+	var _widgetListContainer = __webpack_require__(278);
 	
 	var _widgetListContainer2 = _interopRequireDefault(_widgetListContainer);
 	
@@ -41670,9 +41670,20 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var mapStateToProps = function mapStateToProps(store) {
+	
+	  var searchType = store.searchLayoutState.searchType;
+	  var totalResults = 0;
+	
+	  if (searchType === 'users') {
+	    totalResults = store.userState.users.length;
+	  } else if (searchType === 'widgets') {
+	    totalResults = store.widgetState.widgets.length;
+	  }
+	
 	  return {
+	    searchType: searchType,
 	    title: store.searchLayoutState.title,
-	    totalResults: store.searchLayoutState.totalResults
+	    totalResults: totalResults
 	  };
 	};
 	
@@ -41680,160 +41691,6 @@
 
 /***/ },
 /* 248 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	exports.default = function (props) {
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "search" },
-	    _react2.default.createElement(
-	      "header",
-	      { className: "search-header" },
-	      props.title
-	    ),
-	    _react2.default.createElement(
-	      "div",
-	      { className: "search-results" },
-	      props.children
-	    ),
-	    _react2.default.createElement(
-	      "footer",
-	      { className: "search-footer" },
-	      props.totalResults,
-	      " Results"
-	    )
-	  );
-	};
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ },
-/* 249 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Home = _react2.default.createClass({
-	  displayName: "Home",
-	
-	  render: function render() {
-	    return _react2.default.createElement(
-	      "div",
-	      { className: "home-page" },
-	      _react2.default.createElement(
-	        "h1",
-	        null,
-	        "The app is now using Redux"
-	      ),
-	      _react2.default.createElement(
-	        "p",
-	        null,
-	        "While the ",
-	        _react2.default.createElement(
-	          "a",
-	          { href: "#" },
-	          "CSS-Tricks article"
-	        ),
-	        " for this guide covers an explaination of ",
-	        _react2.default.createElement(
-	          "strong",
-	          null,
-	          "Redux"
-	        ),
-	        ", there are still many implementation details in this code that the article doesn't cover. For a better understanding of those details, see the ",
-	        _react2.default.createElement(
-	          "a",
-	          { href: "https://github.com/bradwestfall/CSS-Tricks-React-Series" },
-	          "Github documentation"
-	        ),
-	        " for this guide."
-	      )
-	    );
-	  }
-	});
-	
-	exports.default = Home;
-
-/***/ },
-/* 250 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactRedux = __webpack_require__(159);
-	
-	var _userList = __webpack_require__(251);
-	
-	var _userList2 = _interopRequireDefault(_userList);
-	
-	var _userApi = __webpack_require__(252);
-	
-	var userApi = _interopRequireWildcard(_userApi);
-	
-	var _store = __webpack_require__(180);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _searchLayoutActions = __webpack_require__(271);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var UserListContainer = _react2.default.createClass({
-	  displayName: 'UserListContainer',
-	
-	
-	  componentDidMount: function componentDidMount() {
-	    userApi.getList().then(function (response) {
-	      _store2.default.dispatch((0, _searchLayoutActions.loadSearchLayout)('User Results', response.data.length));
-	    });
-	  },
-	
-	  render: function render() {
-	    return _react2.default.createElement(_userList2.default, { users: this.props.users, deleteUser: userApi.deleteUser });
-	  }
-	
-	});
-	
-	var mapStateToProps = function mapStateToProps(store) {
-	  return {
-	    users: store.userState.users
-	  };
-	};
-	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserListContainer);
-
-/***/ },
-/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41845,32 +41702,24 @@
 	exports.default = function (props) {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'data-list' },
-	    props.users.map(function (user) {
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { key: user.id, className: 'data-list-item' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'details' },
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/users/' + user.id },
-	            user.name
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'controls' },
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: props.deleteUser.bind(null, user.id), className: 'delete' },
-	            'Delete'
-	          )
-	        )
-	      );
-	    })
+	    { className: 'search' },
+	    _react2.default.createElement(
+	      'header',
+	      { className: 'search-header' },
+	      props.title,
+	      _react2.default.createElement(_searchFormContainer2.default, { searchType: props.searchType })
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'search-results' },
+	      props.children
+	    ),
+	    _react2.default.createElement(
+	      'footer',
+	      { className: 'search-footer' },
+	      props.totalResults,
+	      ' Results'
+	    )
 	  );
 	};
 	
@@ -41878,12 +41727,14 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(189);
+	var _searchFormContainer = __webpack_require__(249);
 	
+	var _searchFormContainer2 = _interopRequireDefault(_searchFormContainer);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 252 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41891,11 +41742,70 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getList = getList;
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _userApi = __webpack_require__(250);
+	
+	var userApi = _interopRequireWildcard(_userApi);
+	
+	var _widgetApi = __webpack_require__(269);
+	
+	var widgetApi = _interopRequireWildcard(_widgetApi);
+	
+	var _searchLayoutActions = __webpack_require__(271);
+	
+	var _searchForm = __webpack_require__(272);
+	
+	var _searchForm2 = _interopRequireDefault(_searchForm);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var SearchFormContainer = _react2.default.createClass({
+	  displayName: 'SearchFormContainer',
+	
+	
+	  render: function render() {
+	    return _react2.default.createElement(_searchForm2.default, { search: this.search, ref: 'child' });
+	  },
+	
+	  search: function search(event) {
+	    event.preventDefault();
+	
+	    // There is a method on the child Search Form which
+	    // accesses and returns the search query
+	    var query = this.refs.child.getQuery();
+	
+	    if (this.props.searchType === 'users') {
+	      userApi.searchUsers(query);
+	    } else if (this.props.searchType === 'widgets') {
+	      widgetApi.searchWidgets(query);
+	    }
+	  }
+	
+	});
+	
+	exports.default = SearchFormContainer;
+
+/***/ },
+/* 250 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getUsers = getUsers;
+	exports.searchUsers = searchUsers;
 	exports.deleteUser = deleteUser;
 	exports.getProfile = getProfile;
 	
-	var _axios = __webpack_require__(253);
+	var _axios = __webpack_require__(251);
 	
 	var _axios2 = _interopRequireDefault(_axios);
 	
@@ -41903,17 +41813,30 @@
 	
 	var _store2 = _interopRequireDefault(_store);
 	
-	var _userActions = __webpack_require__(270);
+	var _userActions = __webpack_require__(268);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	/**
-	 * Get users
+	 * Get all users
 	 */
 	
-	function getList() {
+	function getUsers() {
 	  return _axios2.default.get('http://localhost:3001/users').then(function (response) {
-	    _store2.default.dispatch((0, _userActions.userListSuccess)(response.data));
+	    _store2.default.dispatch((0, _userActions.getUsersSuccess)(response.data));
+	    return response;
+	  });
+	}
+	
+	/**
+	 * Search users
+	 */
+	
+	function searchUsers() {
+	  var query = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+	
+	  return _axios2.default.get('http://localhost:3001/users?q=' + query).then(function (response) {
+	    _store2.default.dispatch((0, _userActions.getUsersSuccess)(response.data));
 	    return response;
 	  });
 	}
@@ -41967,25 +41890,25 @@
 	}
 
 /***/ },
-/* 253 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(254);
+	module.exports = __webpack_require__(252);
 
 /***/ },
-/* 254 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var defaults = __webpack_require__(255);
-	var utils = __webpack_require__(256);
-	var dispatchRequest = __webpack_require__(257);
-	var InterceptorManager = __webpack_require__(265);
-	var isAbsoluteURL = __webpack_require__(266);
-	var combineURLs = __webpack_require__(267);
-	var bind = __webpack_require__(268);
-	var transformData = __webpack_require__(261);
+	var defaults = __webpack_require__(253);
+	var utils = __webpack_require__(254);
+	var dispatchRequest = __webpack_require__(255);
+	var InterceptorManager = __webpack_require__(263);
+	var isAbsoluteURL = __webpack_require__(264);
+	var combineURLs = __webpack_require__(265);
+	var bind = __webpack_require__(266);
+	var transformData = __webpack_require__(259);
 	
 	function Axios(defaultConfig) {
 	  this.defaults = utils.merge({}, defaultConfig);
@@ -42068,7 +41991,7 @@
 	axios.all = function all(promises) {
 	  return Promise.all(promises);
 	};
-	axios.spread = __webpack_require__(269);
+	axios.spread = __webpack_require__(267);
 	
 	// Expose interceptors
 	axios.interceptors = defaultInstance.interceptors;
@@ -42099,12 +42022,12 @@
 
 
 /***/ },
-/* 255 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(256);
+	var utils = __webpack_require__(254);
 	
 	var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 	var DEFAULT_CONTENT_TYPE = {
@@ -42168,7 +42091,7 @@
 
 
 /***/ },
-/* 256 */
+/* 254 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42418,7 +42341,7 @@
 
 
 /***/ },
-/* 257 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -42440,10 +42363,10 @@
 	        adapter = config.adapter;
 	      } else if (typeof XMLHttpRequest !== 'undefined') {
 	        // For browsers use XHR adapter
-	        adapter = __webpack_require__(258);
+	        adapter = __webpack_require__(256);
 	      } else if (typeof process !== 'undefined') {
 	        // For node use HTTP adapter
-	        adapter = __webpack_require__(258);
+	        adapter = __webpack_require__(256);
 	      }
 	
 	      if (typeof adapter === 'function') {
@@ -42459,17 +42382,17 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 258 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(256);
-	var buildURL = __webpack_require__(259);
-	var parseHeaders = __webpack_require__(260);
-	var transformData = __webpack_require__(261);
-	var isURLSameOrigin = __webpack_require__(262);
-	var btoa = window.btoa || __webpack_require__(263);
+	var utils = __webpack_require__(254);
+	var buildURL = __webpack_require__(257);
+	var parseHeaders = __webpack_require__(258);
+	var transformData = __webpack_require__(259);
+	var isURLSameOrigin = __webpack_require__(260);
+	var btoa = window.btoa || __webpack_require__(261);
 	
 	module.exports = function xhrAdapter(resolve, reject, config) {
 	  var requestData = config.data;
@@ -42544,7 +42467,7 @@
 	  // This is only done if running in a standard browser environment.
 	  // Specifically not if we're in a web worker, or react-native.
 	  if (utils.isStandardBrowserEnv()) {
-	    var cookies = __webpack_require__(264);
+	    var cookies = __webpack_require__(262);
 	
 	    // Add xsrf header
 	    var xsrfValue = config.withCredentials || isURLSameOrigin(config.url) ?
@@ -42595,12 +42518,12 @@
 
 
 /***/ },
-/* 259 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(256);
+	var utils = __webpack_require__(254);
 	
 	function encode(val) {
 	  return encodeURIComponent(val).
@@ -42668,12 +42591,12 @@
 
 
 /***/ },
-/* 260 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(256);
+	var utils = __webpack_require__(254);
 	
 	/**
 	 * Parse headers into an object
@@ -42711,12 +42634,12 @@
 
 
 /***/ },
-/* 261 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(256);
+	var utils = __webpack_require__(254);
 	
 	/**
 	 * Transform the data for a request or a response
@@ -42737,12 +42660,12 @@
 
 
 /***/ },
-/* 262 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(256);
+	var utils = __webpack_require__(254);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -42811,7 +42734,7 @@
 
 
 /***/ },
-/* 263 */
+/* 261 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42853,12 +42776,12 @@
 
 
 /***/ },
-/* 264 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(256);
+	var utils = __webpack_require__(254);
 	
 	module.exports = (
 	  utils.isStandardBrowserEnv() ?
@@ -42912,12 +42835,12 @@
 
 
 /***/ },
-/* 265 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	var utils = __webpack_require__(256);
+	var utils = __webpack_require__(254);
 	
 	function InterceptorManager() {
 	  this.handlers = [];
@@ -42970,7 +42893,7 @@
 
 
 /***/ },
-/* 266 */
+/* 264 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42990,7 +42913,7 @@
 
 
 /***/ },
-/* 267 */
+/* 265 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43008,7 +42931,7 @@
 
 
 /***/ },
-/* 268 */
+/* 266 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43025,7 +42948,7 @@
 
 
 /***/ },
-/* 269 */
+/* 267 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43058,7 +42981,7 @@
 
 
 /***/ },
-/* 270 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43066,7 +42989,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.userListSuccess = userListSuccess;
+	exports.getUsersSuccess = getUsersSuccess;
 	exports.deleteUserSuccess = deleteUserSuccess;
 	exports.userProfileSuccess = userProfileSuccess;
 	
@@ -43076,9 +42999,9 @@
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
-	function userListSuccess(users) {
+	function getUsersSuccess(users) {
 	  return {
-	    type: types.USER_LIST_SUCCESS,
+	    type: types.GET_USERS_SUCCESS,
 	    users: users
 	  };
 	}
@@ -43094,6 +43017,98 @@
 	  return {
 	    type: types.USER_PROFILE_SUCCESS,
 	    userProfile: userProfile
+	  };
+	}
+
+/***/ },
+/* 269 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getWidgets = getWidgets;
+	exports.searchWidgets = searchWidgets;
+	exports.deleteWidget = deleteWidget;
+	
+	var _axios = __webpack_require__(251);
+	
+	var _axios2 = _interopRequireDefault(_axios);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _widgetActions = __webpack_require__(270);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	/**
+	 * Get widgets
+	 */
+	
+	function getWidgets() {
+	  return _axios2.default.get('http://localhost:3001/widgets').then(function (response) {
+	    _store2.default.dispatch((0, _widgetActions.getWidgetsSuccess)(response.data));
+	    return response;
+	  });
+	}
+	
+	/**
+	 * Search Widgets
+	 */
+	
+	function searchWidgets() {
+	  var query = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+	
+	  return _axios2.default.get('http://localhost:3001/widgets?q=' + query).then(function (response) {
+	    _store2.default.dispatch((0, _widgetActions.getWidgetsSuccess)(response.data));
+	    return response;
+	  });
+	}
+	
+	/**
+	 * Delete a widget
+	 */
+	
+	function deleteWidget(widgetId) {
+	  return _axios2.default.delete('http://localhost:3001/widgets/' + widgetId).then(function (response) {
+	    _store2.default.dispatch((0, _widgetActions.deleteWidgetSuccess)(widgetId));
+	    return response;
+	  });
+	}
+
+/***/ },
+/* 270 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.getWidgetsSuccess = getWidgetsSuccess;
+	exports.deleteWidgetSuccess = deleteWidgetSuccess;
+	
+	var _actionTypes = __webpack_require__(183);
+	
+	var types = _interopRequireWildcard(_actionTypes);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function getWidgetsSuccess(widgets) {
+	  return {
+	    type: types.GET_WIDGETS_SUCCESS,
+	    widgets: widgets
+	  };
+	}
+	
+	function deleteWidgetSuccess(widgetId) {
+	  return {
+	    type: types.DELETE_WIDGET_SUCCESS,
+	    widgetId: widgetId
 	  };
 	}
 
@@ -43114,16 +43129,112 @@
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
-	function loadSearchLayout(title, totalResults) {
+	function loadSearchLayout(searchType, title) {
 	  return {
 	    type: types.LOAD_SEARCH_LAYOUT,
-	    title: title,
-	    totalResults: totalResults
+	    searchType: searchType,
+	    title: title
 	  };
 	}
 
 /***/ },
 /* 272 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _react2.default.createClass({
+	  displayName: "search-form",
+	
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "form",
+	      { onSubmit: this.props.search, className: "search" },
+	      _react2.default.createElement("input", { type: "text", ref: "search", placeholder: "Search" }),
+	      _react2.default.createElement(
+	        "button",
+	        null,
+	        "Search"
+	      )
+	    );
+	  },
+	
+	  getQuery: function getQuery() {
+	    return this.refs.search.value;
+	  }
+	
+	});
+
+/***/ },
+/* 273 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Home = _react2.default.createClass({
+	  displayName: "Home",
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      "div",
+	      { className: "home-page" },
+	      _react2.default.createElement(
+	        "h1",
+	        null,
+	        "The app is now using Redux"
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "While the ",
+	        _react2.default.createElement(
+	          "a",
+	          { href: "#" },
+	          "CSS-Tricks article"
+	        ),
+	        " for this guide covers an explaination of ",
+	        _react2.default.createElement(
+	          "strong",
+	          null,
+	          "Redux"
+	        ),
+	        ", there are still many implementation details in this code that the article doesn't cover. For a better understanding of those details, see the ",
+	        _react2.default.createElement(
+	          "a",
+	          { href: "https://github.com/bradwestfall/CSS-Tricks-React-Series" },
+	          "Github documentation"
+	        ),
+	        " for this guide."
+	      )
+	    );
+	  }
+	});
+	
+	exports.default = Home;
+
+/***/ },
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43138,11 +43249,118 @@
 	
 	var _reactRedux = __webpack_require__(159);
 	
-	var _userProfile = __webpack_require__(273);
+	var _userList = __webpack_require__(275);
+	
+	var _userList2 = _interopRequireDefault(_userList);
+	
+	var _userApi = __webpack_require__(250);
+	
+	var userApi = _interopRequireWildcard(_userApi);
+	
+	var _store = __webpack_require__(180);
+	
+	var _store2 = _interopRequireDefault(_store);
+	
+	var _searchLayoutActions = __webpack_require__(271);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var UserListContainer = _react2.default.createClass({
+	  displayName: 'UserListContainer',
+	
+	
+	  componentDidMount: function componentDidMount() {
+	    userApi.getUsers();
+	    _store2.default.dispatch((0, _searchLayoutActions.loadSearchLayout)('users', 'User Results'));
+	  },
+	
+	  render: function render() {
+	    return _react2.default.createElement(_userList2.default, { users: this.props.users, deleteUser: userApi.deleteUser });
+	  }
+	
+	});
+	
+	var mapStateToProps = function mapStateToProps(store) {
+	  return {
+	    users: store.userState.users
+	  };
+	};
+	
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserListContainer);
+
+/***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'data-list' },
+	    props.users.map(function (user) {
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { key: user.id, className: 'data-list-item' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'details' },
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/users/' + user.id },
+	            user.name
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'controls' },
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: props.deleteUser.bind(null, user.id), className: 'delete' },
+	            'Delete'
+	          )
+	        )
+	      );
+	    })
+	  );
+	};
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(189);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/***/ },
+/* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(159);
+	
+	var _userProfile = __webpack_require__(277);
 	
 	var _userProfile2 = _interopRequireDefault(_userProfile);
 	
-	var _userApi = __webpack_require__(252);
+	var _userApi = __webpack_require__(250);
 	
 	var userApi = _interopRequireWildcard(_userApi);
 	
@@ -43174,7 +43392,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(UserProfileContainer);
 
 /***/ },
-/* 273 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -43244,7 +43462,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 274 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43259,11 +43477,11 @@
 	
 	var _reactRedux = __webpack_require__(159);
 	
-	var _widgetList = __webpack_require__(275);
+	var _widgetList = __webpack_require__(279);
 	
 	var _widgetList2 = _interopRequireDefault(_widgetList);
 	
-	var _widgetApi = __webpack_require__(276);
+	var _widgetApi = __webpack_require__(269);
 	
 	var widgetApi = _interopRequireWildcard(_widgetApi);
 	
@@ -43282,9 +43500,8 @@
 	
 	
 	  componentDidMount: function componentDidMount() {
-	    widgetApi.getList().then(function (response) {
-	      _store2.default.dispatch((0, _searchLayoutActions.loadSearchLayout)('Widget Results', response.data.length));
-	    });
+	    widgetApi.getWidgets();
+	    _store2.default.dispatch((0, _searchLayoutActions.loadSearchLayout)('widgets', 'Widget Results'));
 	  },
 	
 	  render: function render() {
@@ -43302,7 +43519,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(WidgetListContainer);
 
 /***/ },
-/* 275 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43346,84 +43563,6 @@
 	var _reactRouter = __webpack_require__(189);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/***/ },
-/* 276 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.getList = getList;
-	exports.deleteWidget = deleteWidget;
-	
-	var _axios = __webpack_require__(253);
-	
-	var _axios2 = _interopRequireDefault(_axios);
-	
-	var _store = __webpack_require__(180);
-	
-	var _store2 = _interopRequireDefault(_store);
-	
-	var _widgetActions = __webpack_require__(277);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	/**
-	 * Get widgets
-	 */
-	
-	function getList() {
-	  return _axios2.default.get('http://localhost:3001/widgets').then(function (response) {
-	    _store2.default.dispatch((0, _widgetActions.widgetListSuccess)(response.data));
-	    return response;
-	  });
-	}
-	
-	/**
-	 * Delete a widget
-	 */
-	
-	function deleteWidget(widgetId) {
-	  return _axios2.default.delete('http://localhost:3001/widgets/' + widgetId).then(function (response) {
-	    _store2.default.dispatch((0, _widgetActions.deleteWidgetSuccess)(widgetId));
-	    return response;
-	  });
-	}
-
-/***/ },
-/* 277 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.widgetListSuccess = widgetListSuccess;
-	exports.deleteWidgetSuccess = deleteWidgetSuccess;
-	
-	var _actionTypes = __webpack_require__(183);
-	
-	var types = _interopRequireWildcard(_actionTypes);
-	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
-	function widgetListSuccess(widgets) {
-	  return {
-	    type: types.WIDGET_LIST_SUCCESS,
-	    widgets: widgets
-	  };
-	}
-	
-	function deleteWidgetSuccess(widgetId) {
-	  return {
-	    type: types.DELETE_WIDGET_SUCCESS,
-	    widgetId: widgetId
-	  };
-	}
 
 /***/ }
 /******/ ]);

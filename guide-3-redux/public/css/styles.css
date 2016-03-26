@@ -34,6 +34,22 @@ a {
   Components
 *****************************************/
 
+/**
+ * Input
+ */
+
+input[type="text"] {
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  font-size: 0.7em;
+  padding: 0.5em 1em;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #2297D1;
+}
+
 
 /**
  * Button
@@ -51,6 +67,19 @@ button {
 
 button.delete {
   background-color: #B83B3B;
+}
+
+
+/**
+ * Search Form
+ */
+
+form.search {
+  margin-top: 1em;
+}
+
+form.search button{
+  margin-left: 0.5em;
 }
 
 

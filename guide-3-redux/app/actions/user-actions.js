@@ -1,8 +1,8 @@
 import * as types from '../actions/action-types';
 
-export function userListSuccess(users) {
+export function getUsersSuccess(users) {
   return {
-    type: types.USER_LIST_SUCCESS,
+    type: types.GET_USERS_SUCCESS,
     users
   };
 }

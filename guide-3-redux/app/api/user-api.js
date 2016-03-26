@@ -1,15 +1,27 @@
 import axios from 'axios';
 import store from '../store';
-import { userListSuccess, deleteUserSuccess, userProfileSuccess } from '../actions/user-actions';
+import { getUsersSuccess, deleteUserSuccess, userProfileSuccess } from '../actions/user-actions';
 
 /**
- * Get users
+ * Get all users
  */
 
-export function getList() {
+export function getUsers() {
   return axios.get('http://localhost:3001/users')
     .then(response => {
-      store.dispatch(userListSuccess(response.data));
+      store.dispatch(getUsersSuccess(response.data));
+      return response;
+    });
+}
+
+/**
+ * Search users
+ */
+
+export function searchUsers(query = '') {
+  return axios.get('http://localhost:3001/users?q='+ query)
+    .then(response => {
+      store.dispatch(getUsersSuccess(response.data));
       return response;
     });
 }

@@ -9,7 +9,7 @@ const widgetReducer = function(state = initialState, action) {
 
   switch(action.type) {
 
-    case types.WIDGET_LIST_SUCCESS:
+    case types.GET_WIDGETS_SUCCESS:
       return Object.assign({}, state, { widgets: action.widgets });
 
     case types.DELETE_WIDGET_SUCCESS:

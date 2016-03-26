@@ -1,15 +1,27 @@
 import axios from 'axios';
 import store from '../store';
-import { widgetListSuccess, deleteWidgetSuccess } from '../actions/widget-actions';
+import { getWidgetsSuccess, deleteWidgetSuccess } from '../actions/widget-actions';
 
 /**
  * Get widgets
  */
 
-export function getList() {
+export function getWidgets() {
   return axios.get('http://localhost:3001/widgets')
     .then(response => {
-      store.dispatch(widgetListSuccess(response.data));
+      store.dispatch(getWidgetsSuccess(response.data));
+      return response;
+    });
+}
+
+/**
+ * Search Widgets
+ */
+
+export function searchWidgets(query = '') {
+  return axios.get('http://localhost:3001/widgets?q='+ query)
+    .then(response => {
+      store.dispatch(getWidgetsSuccess(response.data));
       return response;
     });
 }

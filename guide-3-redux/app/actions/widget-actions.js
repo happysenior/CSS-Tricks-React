@@ -1,8 +1,8 @@
 import * as types from '../actions/action-types';
 
-export function widgetListSuccess(widgets) {
+export function getWidgetsSuccess(widgets) {
   return {
-    type: types.WIDGET_LIST_SUCCESS,
+    type: types.GET_WIDGETS_SUCCESS,
     widgets
   };
 }

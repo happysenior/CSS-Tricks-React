@@ -8,10 +8,8 @@ import { loadSearchLayout } from '../../actions/search-layout-actions';
 const WidgetListContainer = React.createClass({
 
   componentDidMount: function() {
-    widgetApi.getList()
-      .then((response) => {
-        store.dispatch(loadSearchLayout('Widget Results', response.data.length))
-      });
+    widgetApi.getWidgets();
+    store.dispatch(loadSearchLayout('widgets', 'Widget Results'))
   },
 
   render: function() {

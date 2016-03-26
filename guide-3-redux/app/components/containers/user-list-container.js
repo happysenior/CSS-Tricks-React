@@ -8,10 +8,8 @@ import { loadSearchLayout } from '../../actions/search-layout-actions';
 const UserListContainer = React.createClass({
 
   componentDidMount: function() {
-    userApi.getList()
-      .then((response) => {
-        store.dispatch(loadSearchLayout('User Results', response.data.length))
-      });
+    userApi.getUsers();
+    store.dispatch(loadSearchLayout('users', 'User Results'))
   },
 
   render: function() {
