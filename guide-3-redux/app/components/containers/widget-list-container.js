@@ -2,10 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import WidgetList from '../views/widget-list';
 import * as widgetApi from '../../api/widget-api';
+import store from '../../store';
+import { loadSearchLayout } from '../../actions/search-layout-actions';
 
 const WidgetListContainer = React.createClass({
 
-  componentDidMount: widgetApi.getList,
+  componentDidMount: function() {
+    widgetApi.getList()
+      .then((response) => {
+        store.dispatch(loadSearchLayout('Widget Results', response.data.length))
+      });
+  },
 
   render: function() {
     return (

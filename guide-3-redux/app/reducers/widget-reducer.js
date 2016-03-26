@@ -1,11 +1,11 @@
 import * as types from '../actions/action-types';
 import _ from 'lodash';
 
-const initialWidgetState = {
+const initialState = {
   widgets: []
 };
 
-const widgetReducer = function(state = initialWidgetState, action) {
+const widgetReducer = function(state = initialState, action) {
 
   switch(action.type) {
 

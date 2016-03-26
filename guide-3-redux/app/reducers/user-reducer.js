@@ -1,14 +1,14 @@
 import * as types from '../actions/action-types';
 import _ from 'lodash';
 
-const initialUserState = {
+const initialState = {
   users: [],
   userProfile: {
     repos: []
   }
 };
 
-const userReducer = function(state = initialUserState, action) {
+const userReducer = function(state = initialState, action) {
 
   switch(action.type) {
 
