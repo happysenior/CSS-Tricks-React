@@ -22,7 +22,7 @@ gulp watch
 
 # Learning the code
 
-If you jump into the code, I would advise looking at Widgets before Users. There's much less code to look at for Widgets and the code that is there is basically the exact same as for Users, although Users just has more.
+If you jump into the code, I would advise looking at `Widgets` before `Users`. There's much less code to look at for `Widgets`. The `Users` code is similar to `Widgets`, but there's more with profiles.
 
 
 # Implementation Details
@@ -78,7 +78,7 @@ The main purpose of the Search Layout component was to convey nested layouts in 
 
 ## Axios
 
-As discussed in the tutorial, we use [axios](https://github.com/mzabriskie/axios) for our AJAX (XHR) requests. However, the components don't make XHR requests directly from their `componentDidMount()` methods as the tutorial showed. Instead, all database API requests exist in the `/app/api` folder. The `componentDidMount()` methods will use those outside files for XHR requests. This just helps keep the component size down and helps them to look cleaner.
+As discussed in the tutorial, we use [axios](https://github.com/mzabriskie/axios) for our Ajax (XHR) requests. However, the components don't make XHR requests directly from their `componentDidMount()` methods as the tutorial showed. Instead, all database API requests exist in the `/app/api` folder. The `componentDidMount()` methods will use those outside files for XHR requests. This just helps keep the component size down and helps them to look cleaner.
 
 
 ## ES6 Arrow Functions
@@ -87,32 +87,47 @@ ES6 arrow functions are very popular in React tutorials online. While the CSS-Tr
 
 ```js
 // Old way with ES5
-deleteUser: function(userId) {
-  var _this = this;
-  userApi.deleteUser(userId).then(function() {
-    _this.refreshUserList();
+componentDidMount: function() {
+  userApi.getList().then(function(users) {
+    this.setState({users: users});
   });
 },
 
 // New way with ES6 Arrow Functions
-deleteUser: (userId) => {
-  userApi.deleteUser(userId).then(() => {
-    this.refreshUserList();
+componentDidMount: function() {
+  userApi.getList().then(users => {
+    this.setState({users: users});
   });
-},
+}
 ```
 
-At first, it may seem that it's just new syntax sugar and that it only saves some characters since we don't have to type the word "function", so who cares? But actually, there's a cool feature they have that the old way doesn't.
+Here's another example with Axios promises:
 
-The API call is a Promise which has a `.then` method and a callback. In the first example, we must bind `this` to `_this` to preserve it for the callback. But arrow functions don't use lexical scope which means the `this` keyword inside them is still referencing the outer function's `this`. This means we no longer need to do the `var _this = this` trick.
+```js
+// Old way with ES5
+export function getList() {
+  return axios.get('http://localhost:3001/users')
+    .then(function(response) {
+      return response.data;
+    });
+}
 
-For this guide, all callback functions use arrow functions.
+
+// New way with ES6 Arrow Functions
+export function getList() {
+  return axios.get('http://localhost:3001/users')
+    .then(response => response.data);
+}
+```
+
+Are arrow functions just syntax sugar for less typing? No, they actually have different rules for scope which can sometimes be beneficial for callback functions. For this guide, we'll only use them for callback functions so you can get used to them in small doses.
+
+If you're interested in learning more, [I wrote a blog post](http://bradwestfall.com/articles/dont-get-javascript-es6-arrow-functions).
+
 
 ## ES6 Spread Operator
 
-Be sure to look up and study the new [ES6 spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator). It goes really well with React!
-
-Considering how React uses attributes to pass props and state from parent to child component, the spread operator can make this process even easier.
+ES6 now has a [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator). React borrowed the idea for passing attributes into components. To understand this new feature, consider the following scenarios...
 
 Imagine we wanted to pass an object from parent component to child component:
 
@@ -129,9 +144,7 @@ render: function() {
 }
 ```
 
-This would do the trick but now the child component must access the user's name like this: `this.props.user.name`
-
-On the parent, we could do this instead:
+This works but the child component must access the name by doing `this.props.user.name`. It might be nicer to just be able to type `this.props.name`. But in order to have that option, we would have to itemize and list each property when we pass them into the child component:
 
 ```js
 // Parent Component's render method
@@ -146,11 +159,11 @@ render: function() {
 }
 ```
 
-Which would allow the child component to now access the user's name like this: `this.props.name`. This nicer for the child component, but it's obnoxious to create an attribute for each property on the parent component.
+Now, the child component can do `this.props.name`. This is nicer for the child component, but it's obnoxious to have to list out each property.
 
-### Spread operator to the rescue!
+### Spread Attributes to the rescue!
 
-With the spread operator, we can now write the parent component like this:
+With React's [Spread Attributes](https://facebook.github.io/react/docs/jsx-spread.html#spread-attributes), we can do this:
 
 ```js
 // Parent Component's render method
@@ -167,20 +180,19 @@ render: function() {
 
 This is a nice way to write code for the parent and the child gets to access the props like this: `this.props.name`, `this.props.occupation` and `this.props.state`.
 
-In the guide, you can see this behavior on the [`user-profile-container.js`](https://github.com/bradwestfall/CSS-Tricks-React-Series/blob/master/guide-2-container-components/app/components/containers/user-profile-container.js#L33) file.
+In the guide, you can see this behavior on the [`user-profile-container.js`](https://github.com/bradwestfall/CSS-Tricks-React-Series/blob/master/guide-2-container-components/app/components/containers/user-profile-container.js#L32) file.
 
 ## Delete Strategy
 
-In the CSS-Tricks tutorial, we showed how events can be passed from Container Components down to Presentational Components. But in the case of our _delete_ functionality, we have a new problem to solve that wasn't covered well in the tutorial directly, however there was reference to it in the [CodePen example](http://codepen.io/bradwestfall/pen/oxBGRa).
+In the CSS-Tricks tutorial, we showed how [events can be passed from Container Components down to Presentational Components](https://css-tricks.com/learning-react-container-components/#article-header-id-6). Thinks are slightly more complex in this guide though. We have a new problem to solve that wasn't covered well in the tutorial.
 
-The problem is that sometimes functions like `deleteUser()` need to be called with argument dynamically based on the context of the event binding. In other words, all the delete buttons are created in a loop which is where we happen to have access to the rest of the user's information via the `user` object. With the reference to the `deleteUser()` method being in a loop, how do we ensure that when each one is called, it will call `deleteUser` with the correct user context?
+The problem is that sometimes functions like `deleteUser()` need to be called with an argument. In this case it's the `userId`. The `onClick` can't _call_ the `deleteUser()` method with the argument right away. That would lead to the `deleteUser()` method getting called as soon as the page loads for all the users. Instead, it needs to ensure that _when_ the `onClick` happens, to call the function with an argument. For that we'll use `.bind()`.
 
 #### .bind()
 
-To do this, we can use the `.bind()` method:
+This is how we'll indicate that when the `onClick` event happens, to call `deleteUser()` and pass the correct `user.id` as the first argument:
 
 ```js
-// Correct
 {props.users.map(user => {
   return (
     <button onClick={props.deleteUser.bind(null, user.id)}>Delete</button>
@@ -188,21 +200,17 @@ To do this, we can use the `.bind()` method:
 })}
 ```
 
-Note that we don't want to call the `deleteUser()` method right now while the button is being created. Had we done:
+#### Updating the user list after removal
+
+In the XHR callbacks to delete `Users` and `Widgets`, the code makes a copy of the state, then updates and replaces the state with the copy. We do this so our state is "immutable". This is a topic that's covered in the third CSS-Tricks article on Redux.
 
 ```js
-// Incorrect
-{props.users.map(user => {
-  return (
-    <button onClick={props.deleteUser(user.id)}>Delete</button>
-  );
-})}
+deleteUser: function(userId) {
+  userApi.deleteUser(userId).then(() => {
+    const newUsers = _.filter(this.state.users, user => user.id != userId);
+    this.setState({users: newUsers})
+  });
+}
 ```
 
-This would call `deleteUser()` the very moment the button is created. By leaving off the parenthesis, we are indicating in JavaScript that this is a reference to a function name, not actually calling the function. Then with the `.bind()` part, we're telling JavaScript that when it does call this method, do so with `user.id` as it's first argument. The `deleteUser()` method on the Container Component will now receive a `userId` which is correct for each user.
-
-#### Refresh the user list after the XHR request
-
-In the XHR callbacks to delete users and widgets, the code refreshes the whole list with another XHR request. I chose this strategy simply because it was easier to write and understand. Another strategy could be to simply remove the DOM node of the user that was deleted when the first XHR request returned. These are the types of implementation strategies that you'll have to decide on your own.
-
-One important thing to know is that with either strategy, you don't need to reach into the DOM yourself to make DOM updates. That would be a very "jQuery-style" way of thinking about how to solve this problem. All we really need to do for the DOM update is to change the state. By doing that, the component will re-render automatically and the DOM will be changed.
+Note that [lodash](https://lodash.com/) is being used to filter the current state by making a copy of it with all users that don't match the ID. The copy without the matched user will replace the state.

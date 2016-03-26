@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import WidgetList from '../views/widget-list';
 import * as widgetApi from '../../api/widget-api';
 
@@ -11,10 +12,6 @@ const WidgetListContainer = React.createClass({
   },
 
   componentDidMount: function() {
-    this.refreshWidgetList();
-  },
-
-  refreshWidgetList: function() {
     widgetApi.getList().then(widgets => {
       this.setState({widgets: widgets})
     });
@@ -22,7 +19,8 @@ const WidgetListContainer = React.createClass({
 
   deleteWidget: function(widgetId) {
     widgetApi.deleteWidget(widgetId).then(() => {
-      this.refreshWidgetList();
+      const newWidgets = _.filter(this.state.widgets, widget => widget.id != widgetId);
+      this.setState({widgets: newWidgets})
     });
   },
 

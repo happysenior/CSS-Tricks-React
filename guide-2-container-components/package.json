@@ -11,6 +11,7 @@
     "axios": "^0.9.1",
     "express": "^4.13.4",
     "json-server": "^0.8.8",
+    "lodash": "^4.6.1",
     "react": "0.14.7",
     "react-dom": "0.14.7",
     "react-router": "2.0.0"

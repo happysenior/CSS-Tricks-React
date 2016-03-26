@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import UserList from '../views/user-list';
 import * as userApi from '../../api/user-api';
 
@@ -11,10 +12,6 @@ const UserListContainer = React.createClass({
   },
 
   componentDidMount: function() {
-    this.refreshUserList();
-  },
-
-  refreshUserList: function() {
     userApi.getList().then(users => {
       this.setState({users: users})
     });
@@ -22,7 +19,8 @@ const UserListContainer = React.createClass({
 
   deleteUser: function(userId) {
     userApi.deleteUser(userId).then(() => {
-      this.refreshUserList();
+      const newUsers = _.filter(this.state.users, user => user.id != userId);
+      this.setState({users: newUsers})
     });
   },
 
