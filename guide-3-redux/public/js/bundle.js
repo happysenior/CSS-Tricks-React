@@ -43213,7 +43213,7 @@
 	          { href: "#" },
 	          "CSS-Tricks article"
 	        ),
-	        " for this guide covers an explaination of ",
+	        " for this guide covers an explanation of ",
 	        _react2.default.createElement(
 	          "strong",
 	          null,

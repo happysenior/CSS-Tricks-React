@@ -7,7 +7,7 @@ const Home = React.createClass({
         <h1>The app has React Router</h1>
         <p>
           While the <a href="https://css-tricks.com/learning-react-router/">CSS-Tricks article</a> for
-          this guide covers an explaination of <strong>React Router</strong>, there
+          this guide covers an explanation of <strong>React Router</strong>, there
           are still many implementation details in this code that the article
           doesn't cover. For a better understanding of those details, see
           the <a href="https://github.com/bradwestfall/CSS-Tricks-React-Series">Github documentation</a> for

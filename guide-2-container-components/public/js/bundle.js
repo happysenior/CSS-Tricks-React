@@ -24907,7 +24907,7 @@
 	          { href: "https://css-tricks.com/learning-react-container-components" },
 	          "CSS-Tricks article"
 	        ),
-	        " for this guide covers an explaination of ",
+	        " for this guide covers an explanation of ",
 	        _react2.default.createElement(
 	          "strong",
 	          null,
