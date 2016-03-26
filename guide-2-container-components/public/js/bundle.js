@@ -24849,7 +24849,7 @@
 	    _react2.default.createElement(
 	      "header",
 	      { className: "search-header" },
-	      "Users"
+	      "[Search Title]"
 	    ),
 	    _react2.default.createElement(
 	      "div",
@@ -24859,7 +24859,7 @@
 	    _react2.default.createElement(
 	      "footer",
 	      { className: "search-footer" },
-	      "6 Results"
+	      "[Total Results]"
 	    )
 	  );
 	};
@@ -24920,6 +24920,11 @@
 	          "Github documentation"
 	        ),
 	        " for this guide."
+	      ),
+	      _react2.default.createElement(
+	        "p",
+	        null,
+	        "As far as the [Search Title] and [Total Results] that you'll see on the results page, those are static for now. We will make them dynamic in the third guide."
 	      )
 	    );
 	  }
@@ -24970,7 +24975,7 @@
 	  componentDidMount: function componentDidMount() {
 	    var _this = this;
 	
-	    userApi.getList().then(function (users) {
+	    userApi.getUsers().then(function (users) {
 	      _this.setState({ users: users });
 	    });
 	  },
@@ -40149,7 +40154,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getList = getList;
+	exports.getUsers = getUsers;
 	exports.deleteUser = deleteUser;
 	exports.getProfile = getProfile;
 	
@@ -40163,7 +40168,7 @@
 	 * Get users
 	 */
 	
-	function getList() {
+	function getUsers() {
 	  return _axios2.default.get('http://localhost:3001/users').then(function (response) {
 	    return response.data;
 	  });
@@ -41479,7 +41484,7 @@
 	  componentDidMount: function componentDidMount() {
 	    var _this = this;
 	
-	    widgetApi.getList().then(function (widgets) {
+	    widgetApi.getWidgets().then(function (widgets) {
 	      _this.setState({ widgets: widgets });
 	    });
 	  },
@@ -41558,7 +41563,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getList = getList;
+	exports.getWidgets = getWidgets;
 	exports.deleteWidget = deleteWidget;
 	
 	var _axios = __webpack_require__(225);
@@ -41571,7 +41576,7 @@
 	 * Get widgets
 	 */
 	
-	function getList() {
+	function getWidgets() {
 	  return _axios2.default.get('http://localhost:3001/widgets').then(function (response) {
 	    return response.data;
 	  });

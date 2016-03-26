@@ -13,6 +13,10 @@ const Home = React.createClass({
           the <a href="https://github.com/bradwestfall/CSS-Tricks-React-Series">Github documentation</a> for
           this guide.
         </p>
+        <p>
+          As far as the [Search Title] and [Total Results] that you'll see on the results page,
+          those are static for now. We will make them dynamic in the third guide.
+        </p>
       </div>
     );
   }

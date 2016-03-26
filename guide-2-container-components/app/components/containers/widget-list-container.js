@@ -12,7 +12,7 @@ const WidgetListContainer = React.createClass({
   },
 
   componentDidMount: function() {
-    widgetApi.getList().then(widgets => {
+    widgetApi.getWidgets().then(widgets => {
       this.setState({widgets: widgets})
     });
   },

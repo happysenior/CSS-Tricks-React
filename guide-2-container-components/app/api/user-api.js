@@ -4,7 +4,7 @@ import axios from 'axios';
  * Get users
  */
 
-export function getList() {
+export function getUsers() {
   return axios.get('http://localhost:3001/users')
     .then(response => response.data);
 }

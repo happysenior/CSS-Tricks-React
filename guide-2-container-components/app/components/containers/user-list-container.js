@@ -12,7 +12,7 @@ const UserListContainer = React.createClass({
   },
 
   componentDidMount: function() {
-    userApi.getList().then(users => {
+    userApi.getUsers().then(users => {
       this.setState({users: users})
     });
   },

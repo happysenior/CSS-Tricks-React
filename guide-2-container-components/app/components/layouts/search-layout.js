@@ -5,13 +5,13 @@ export default function(props) {
   return (
     <div className="search">
       <header className="search-header">
-        Users
+        [Search Title]
       </header>
       <div className="search-results">
         {props.children}
       </div>
       <footer className="search-footer">
-        6 Results
+        [Total Results]
       </footer>
     </div>
     );
