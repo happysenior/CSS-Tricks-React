@@ -48,7 +48,7 @@ This function is called an "action creator". Now you don't have to remember the 
 
 Arguably though, this is even more boilerplate since your application is going to potentially have many action type constants and many action creators.
 
-> ES6 Alert! You may have noticed what seems to be a typo in the example. The action object has a `text` property but no value is being applied. This is not an error. In ES6, this is called a [shorthand property name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015). It simultaneously creates a property called `text` and adds the value of the `text` variable to it.
+> ES2015 Alert! You may have noticed what seems to be a typo in the example. The action object has a `text` property but no value is being applied. This is not an error. In ES2015, this is called a [shorthand property name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015). It simultaneously creates a property called `text` and adds the value of the `text` variable to it.
 
 ## Reduce Boilerplate Code with `redux-act`
 
