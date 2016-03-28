@@ -1,6 +1,6 @@
 # Action Strategies
 
-The article covers actions to an extent, but there's a lot more to consider. As stated before, actions are plain objects. Redux is mostly unopinionated about what types of things should or can go into the action, as long as it has a `type` attribute and as a it remains [serializable](http://redux.js.org/docs/Glossary.html#action).
+[The article](https://css-tricks.com/learning-react-redux/) covers actions to an extent, but there's a lot more to consider. As stated before, actions are plain objects. Redux is mostly unopinionated about what types of things should or can go into the action, as long as it has a `type` attribute and as a it remains [serializable](http://redux.js.org/docs/Glossary.html#action).
 
 Here are some examples of actions from Redux's documentation:
 
