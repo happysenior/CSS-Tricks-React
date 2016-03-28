@@ -60,4 +60,4 @@ Since the rules around creating actions are so loose. The [Flux Standard Action]
 
 ## Serializable Actions and State
 
-Actions and state should should only contain data which is "serializable", in other words, it converts to JSON well. This isn't a strict rule but it's highly recommended by the Redux docs. Mostly, this is beneficial for time travel and .... finish this section
+Actions and state should should only contain data which is "serializable", in other words, it converts to JSON well. This isn't a strict rule but it's highly recommended by the Redux docs.
