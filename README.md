@@ -30,6 +30,12 @@ gulp
 
 To run the code from the other guides, `cd` to their folders and run the `npm` steps again from their folder.
 
+If you want to edit the React code, you'll have to re-build the `public/js/bundle.js` file with Webpack. You'll probably want to open a new terminal tab so you can keep your server running. To rebuild with Webpack, type:
+
+```sh
+gulp watch
+```
+
 Also note that you'll need to [globally install Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) first if you haven't already
 
 
