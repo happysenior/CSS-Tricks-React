@@ -24,7 +24,7 @@ store.dispatch({ type: REMOVE_TODO, id: 42 });
 store.dispatch({ type: LOAD_ARTICLE, response: { ... } });
 ```
 
-> ES2015 Alert! Simply having `const` (especially when using a tool like Webpack) won't establish globally unique values. In JavaScript, using `const` just means its value can't change, not that it's unique. But as a strategy, some devs create one file with all their action type constants inside which helps to see them all in one place, and to keep them unique.
+> ES2015 Alert! Simply having `const` doesn't mean it's value is ensured to be unique. Using `const` just means its value can't change. But as a strategy, some devs create one file with all their action type constants inside which helps to see them all in one place, and to visually ensure they are unique.
 
 Some strategies regarding actions seem tedious with lots of boilerplate code. Redux Docs offer a suggestion for [reducing boilerplate code](http://redux.js.org/docs/recipes/ReducingBoilerplate.html). One strategy it offers in addition to using constants, is to use "action creators".
 
