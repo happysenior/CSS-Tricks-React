@@ -9,7 +9,7 @@ const WidgetListContainer = React.createClass({
 
   componentDidMount: function() {
     widgetApi.getWidgets();
-    store.dispatch(loadSearchLayout('widgets', 'Widget Results'))
+    store.dispatch(loadSearchLayout('widgets', 'Widget Results'));
   },
 
   render: function() {

@@ -9,7 +9,7 @@ const UserListContainer = React.createClass({
 
   componentDidMount: function() {
     userApi.getUsers();
-    store.dispatch(loadSearchLayout('users', 'User Results'))
+    store.dispatch(loadSearchLayout('users', 'User Results'));
   },
 
   render: function() {

@@ -98,7 +98,7 @@ const UserListContainer = React.createClass({
 -      this.setState({users: users})
 -    });
 +     userApi.getUsers();
-+     store.dispatch(loadSearchLayout('users', 'User Results'))
++     store.dispatch(loadSearchLayout('users', 'User Results'));
   },
 
 -  deleteUser: function(userId) {
@@ -136,3 +136,37 @@ store.dispatch(loadSearchLayout('users', 'User Results'))
 ```
 
 This way the search layout can better represent users and widgets.
+
+
+# Search Layout
+
+In guide-2, the search-layout was only a view. But now it needs to coordinate with state so it has a Container Component. Unlike some of the other Container Components, it's a perfect example of us not needing to make our own Container Component to wrap `react-redux` around:
+
+```js
+import React from 'react';
+import { connect } from 'react-redux';
+import SearchLayout from '../layouts/search-layout';
+
+const mapStateToProps = function(store) {
+
+  let searchType = store.searchLayoutState.searchType;
+  let totalResults = 0;
+
+  if (searchType === 'users') {
+    totalResults = store.userState.users.length;
+  } else if (searchType === 'widgets') {
+    totalResults = store.widgetState.widgets.length;
+  }
+
+  return {
+    searchType,
+    title: store.searchLayoutState.title,
+    totalResults
+  };
+
+};
+
+export default connect(mapStateToProps)(SearchLayout);
+```
+
+This `mapStateToProps()` function is also a great example of how we can convert specific parts of state into the exact props that we need.
