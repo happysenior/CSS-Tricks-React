@@ -1,5 +1,11 @@
 # Guide 3: Redux
 
+## Final Guide
+
+This is the final Guide in this series. Our code builds a Single Page Application which resembles this functionality:
+
+![Final Preview](https://raw.githubusercontent.com/bradwestfall/CSS-Tricks-React-Series/master/guide-3-redux/docs/preview.gif)
+
 ## Installing and Running
 
 To start, make sure you're in the `guide-3-redux` folder in command-line.
