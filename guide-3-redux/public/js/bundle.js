@@ -41769,15 +41769,13 @@
 	  displayName: 'SearchFormContainer',
 	
 	
-	  render: function render() {
-	    return _react2.default.createElement(_searchForm2.default, { search: this.search, ref: 'child' });
-	  },
-	
 	  search: function search(event) {
 	    event.preventDefault();
 	
-	    // There is a method on the child Search Form which
-	    // accesses and returns the search query
+	    // By assigning a "child" ref to <SearchForm />, we
+	    // can use that reference to gain access to the
+	    // .getQuery() method. See the code for
+	    // <SearchForm /> to see how it returns a value.
 	    var query = this.refs.child.getQuery();
 	
 	    if (this.props.searchType === 'users') {
@@ -41785,6 +41783,10 @@
 	    } else if (this.props.searchType === 'widgets') {
 	      widgetApi.searchWidgets(query);
 	    }
+	  },
+	
+	  render: function render() {
+	    return _react2.default.createElement(_searchForm2.default, { search: this.search, ref: 'child' });
 	  }
 	
 	});
@@ -43157,6 +43159,10 @@
 	  displayName: "search-form",
 	
 	
+	  getQuery: function getQuery() {
+	    return this.refs.search.value;
+	  },
+	
 	  render: function render() {
 	    return _react2.default.createElement(
 	      "form",
@@ -43168,10 +43174,6 @@
 	        "Search"
 	      )
 	    );
-	  },
-	
-	  getQuery: function getQuery() {
-	    return this.refs.search.value;
 	  }
 	
 	});
