@@ -10,7 +10,7 @@ Here are some examples of actions from Redux's documentation:
 { type: 'LOAD_ARTICLE', response: { ... } }
 ```
 
-String literals are just one common way to distinguish one type from another. They are not required but this is the more conventional way to write them. It's important that they are globally unique though. Remember, all reducers will receive the action when it's dispatched so there's no way to conduct a dispatch that goes to one particular reducer. Therefore, having an action type called `"ADD"` is too ambiguous.
+String literals are just one common way to distinguish one type from another. They are not required but this is the more conventional way distinguish action types. It's important that they are globally unique though. Remember, all reducers will receive the action when it's dispatched so there's no way to conduct a dispatch that goes to one particular reducer. Therefore, having an action type called `"ADD"` is too ambiguous.
 
 To help ensure uniqueness, many developers make "action types" as constants:
 
