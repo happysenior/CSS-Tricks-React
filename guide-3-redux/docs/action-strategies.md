@@ -52,7 +52,7 @@ Arguably though, this is even more boilerplate since your application is going t
 
 ## Reduce Boilerplate Code with `redux-act`
 
-If you're not liking all the boilerplate hassle that can go into creating action type constants and action creators, consider using [redux-act](https://github.com/pauldijou/redux-act), a third party tool that abstracts of making action creators and abstracts the process of action types so you don't even have to think about them. Its documentation can speak for itself, but I personally use this tool and I love it.
+If you're not liking all the boilerplate hassle that can go into creating action type constants and action creators, consider using [redux-act](https://github.com/pauldijou/redux-act), a third party tool that abstracts the making of action creators and action types so you don't even have to think about them. Its documentation can speak for itself, but I personally use this tool and I love it.
 
 ## Flux Standard Action (FSA)
 
