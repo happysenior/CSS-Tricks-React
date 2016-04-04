@@ -13,7 +13,7 @@ Each series comes with its own guide in this repo. Each guide will have a README
 
 - [Guide 1: React Router](https://github.com/bradwestfall/CSS-Tricks-React-Series/tree/master/guide-1-react-router)
 - [Guide 2: Container Components](https://github.com/bradwestfall/CSS-Tricks-React-Series/tree/master/guide-2-container-components)
-- Guide 3: Redux (Coming Soon)
+- [Guide 3: Redux](https://css-tricks.com/learning-react-redux/)
 
 
 ## Installing and Running Code
