@@ -70,7 +70,7 @@ Note that simply running `gulp` will launch the Node server whereas `gulp watch`
 
 Babel will tell Webpack how to convert ES6 (and even ES7) code to ES5. You might ask why we would want to write in future versions of JavaScript that aren't even fully supported? Well, there's new JavaScript syntax which is really nice to use. Plus, ES6 was finalized in 2015, which is why it's also called ES2015. So why should we have to wait for all browsers to catch up to a standard that's from 2015?
 
-Many React guides use ES6, so getting familiar with it will also help you learn React.
+Many React guides use ES6, so getting familiar with it will also help you learn React. Also note that the a common way to use Babel is to put it's list of desired "presets" in a `.babelrc` file. This is the strategy that we're using and this file is already created for you.
 
 
 # Extra Tips and Tricks
