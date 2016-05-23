@@ -5,7 +5,7 @@ var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config.js');
 var nodemon = require('gulp-nodemon');
 var rename = require('gulp-rename');
-
+var path = require('path');
 
 /**
  * Build (Webpack)
@@ -40,7 +40,8 @@ gulp.task('restore-database', function() {
 });
 
 gulp.task('serve:api', ['restore-database'], function(done) {
-  cp.exec('node_modules/.bin/json-server --watch ./data/db.json --port 3001', {stdio: 'inherit'})
+  var serverPath = path.join(__dirname, 'node_modules/.bin/json-server');
+  cp.exec(serverPath + ' --watch ./data/db.json --port 3001', {stdio: 'inherit'})
     .on('close', done);
 });
 
@@ -50,8 +51,9 @@ gulp.task('serve:api', ['restore-database'], function(done) {
  */
 
 gulp.task('serve:node', function(done) {
+  var babelPath = path.join(__dirname, 'node_modules/.bin/babel-node');
   nodemon({
-    exec: './node_modules/.bin/babel-node ./server.js',
+    exec: babelPath + ' ./server.js',
     watch: ['server.js'],
     ext: 'js html'
   });
