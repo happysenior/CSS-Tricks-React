@@ -51,9 +51,9 @@ gulp.task('serve:api', ['restore-database'], function(done) {
  */
 
 gulp.task('serve:node', function(done) {
-  var serverPath = path.join(__dirname, 'node_modules/.bin/babel-node');
+  var babelPath = path.join(__dirname, 'node_modules/.bin/babel-node');
   nodemon({
-    exec: serverPath + ' ./server.js',
+    exec: babelPath + ' ./server.js',
     watch: ['server.js'],
     ext: 'js html'
   });

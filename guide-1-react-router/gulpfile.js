@@ -3,6 +3,7 @@ var del = require('del');
 var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config.js');
 var nodemon = require('gulp-nodemon');
+var path = require('path');
 
 
 /**
@@ -32,8 +33,9 @@ gulp.task('watch:build', function() {
  */
 
 gulp.task('serve:node', function(done) {
+  var babelPath = path.join(__dirname, 'node_modules/.bin/babel-node');
   nodemon({
-    exec: './node_modules/.bin/babel-node ./server.js',
+    exec: babelPath + ' ./server.js',
     watch: ['server.js'],
     ext: 'js html'
   });
