@@ -59,7 +59,7 @@ Your project (or in this case, each guide at this repo) will have a `webpack.con
 
 The `bundle.js` file that Webpack creates will be the only JavaScript file sent to the browser. So the browser will start with all the JavaScript it needs for the application without making additional requests back to the server.
 
-Webpack allows multiple ways to indicate dependencies in JavaScript files. One way you'll see commonly online uses `require()` statements. That's a pattern called CommonJS. But more recently, JavaScript is in the process of adopting a new syntax called "ES6 modules" which use `include` statements. The browser doesn't understand either of these approaches, so Webpack will convert code written with CommonJS or ES6 modules into ES5 which the browser does understand. But Webpack will need a third party cool called Babel to use ES6 modules -- which is what these guides use for the app.
+Webpack allows multiple ways to indicate dependencies in JavaScript files. One way you'll see commonly online uses `require()` statements. That's a pattern called CommonJS. But more recently, JavaScript is in the process of adopting a new syntax called "ES6 modules" which use `include` statements. The browser doesn't understand either of these approaches, so Webpack will convert code written with CommonJS or ES6 modules into ES5 which the browser does understand. But Webpack will need a third party tool called Babel to use ES6 modules -- which is what these guides use for the app.
 
 If this all sounds chaotic and difficult to setup, don't worry, all the work is already done. All you need to do is run the `npm install` and then the `gulp` and/or `gulp watch` commands from the install instructions.
 
