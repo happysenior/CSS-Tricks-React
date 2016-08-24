@@ -56,7 +56,7 @@ If you're not liking all the boilerplate hassle that can go into creating action
 
 ## Flux Standard Action (FSA)
 
-Since the rules around creating actions are so loose. The [Flux Standard Action](https://github.com/acdlite/flux-standard-action) was created to be a set of rules around how to create actions. They are totally optional, but `redux-act` does require them.
+Since the rules around creating actions are so loose, the [Flux Standard Action](https://github.com/acdlite/flux-standard-action) was created to be a set of rules around how to create actions. They are totally optional, but `redux-act` does require them.
 
 ## Serializable Actions and State
 
