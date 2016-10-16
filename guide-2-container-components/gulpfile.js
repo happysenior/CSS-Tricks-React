@@ -40,8 +40,7 @@ gulp.task('restore-database', function() {
 });
 
 gulp.task('serve:api', ['restore-database'], function(done) {
-  var serverPath = './node_modules/.bin/json-server';
-  cp.exec(serverPath + ' --watch ./data/db.json --port 3001', {stdio: 'inherit'})
+  cp.exec('node ./node_modules/json-server/bin/index.js --watch ./data/db.json --port 3001', {stdio: 'inherit'})
     .on('close', done);
 });
 
@@ -51,9 +50,8 @@ gulp.task('serve:api', ['restore-database'], function(done) {
  */
 
 gulp.task('serve:node', function(done) {
-  var babelPath = './node_modules/.bin/babel-node';
   nodemon({
-    exec: babelPath + ' ./server.js',
+    exec: 'node ./node_modules/babel-cli/bin/babel-node.js ./server.js',
     watch: ['server.js'],
     ext: 'js html'
   });
