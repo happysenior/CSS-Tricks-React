@@ -33,9 +33,8 @@ gulp.task('watch:build', function() {
  */
 
 gulp.task('serve:node', function(done) {
-  var babelPath = path.join(__dirname, 'node_modules/.bin/babel-node');
   nodemon({
-    exec: babelPath + ' ./server.js',
+    exec: 'node ./node_modules/babel-cli/bin/babel-node.js ./server.js',
     watch: ['server.js'],
     ext: 'js html'
   });
