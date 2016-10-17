@@ -21432,6 +21432,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _actionTypes = __webpack_require__(186);
 	
 	var types = _interopRequireWildcard(_actionTypes);
@@ -21459,7 +21461,7 @@
 	  switch (action.type) {
 	
 	    case types.GET_USERS_SUCCESS:
-	      return Object.assign({}, state, { users: action.users });
+	      return _extends({}, state, { users: action.users });
 	
 	    case types.DELETE_USER_SUCCESS:
 	
@@ -21467,10 +21469,10 @@
 	      var newUsers = _lodash2.default.filter(state.users, function (user) {
 	        return user.id != action.userId;
 	      });
-	      return Object.assign({}, state, { users: newUsers });
+	      return _extends({}, state, { users: newUsers });
 	
 	    case types.USER_PROFILE_SUCCESS:
-	      return Object.assign({}, state, { userProfile: action.userProfile });
+	      return _extends({}, state, { userProfile: action.userProfile });
 	
 	  }
 	
@@ -38499,6 +38501,8 @@
 	  value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _actionTypes = __webpack_require__(186);
 	
 	var types = _interopRequireWildcard(_actionTypes);
@@ -38523,7 +38527,7 @@
 	  switch (action.type) {
 	
 	    case types.GET_WIDGETS_SUCCESS:
-	      return Object.assign({}, state, { widgets: action.widgets });
+	      return _extends({}, state, { widgets: action.widgets });
 	
 	    case types.DELETE_WIDGET_SUCCESS:
 	
@@ -38531,7 +38535,7 @@
 	      var newWidgets = _lodash2.default.filter(state.widgets, function (widget) {
 	        return widget.id != action.widgetId;
 	      });
-	      return Object.assign({}, state, { widgets: newWidgets });
+	      return _extends({}, state, { widgets: newWidgets });
 	
 	  }
 	
@@ -38549,6 +38553,8 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 	
 	var _actionTypes = __webpack_require__(186);
 	
@@ -38569,7 +38575,7 @@
 	  switch (action.type) {
 	
 	    case types.LOAD_SEARCH_LAYOUT:
-	      return Object.assign({}, state, {
+	      return _extends({}, state, {
 	        searchType: action.searchType,
 	        title: action.title
 	      });
