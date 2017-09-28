@@ -7,7 +7,7 @@ export default function(props) {
       <img src={props.imageUrl} />
       <div className="details">
         <h1>{props.name}</h1>
-        <a href={'http://twtter.com/' + props.twitter}>@{props.twitter}</a>
+        <a href={'http://twitter.com/' + props.twitter}>@{props.twitter}</a>
         <p>Works on <strong>{props.worksOn}</strong></p>
         <h3>Github Repos:</h3>
         <ul className="repos">
